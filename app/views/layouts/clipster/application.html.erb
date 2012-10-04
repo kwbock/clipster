@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>Clipster</title>
+  <%= stylesheet_link_tag    "clipster/bootstrap" %>
   <%= stylesheet_link_tag    "clipster/application", :media => "all" %>
+
+  <%= javascript_include_tag "clipster/bootstrap" %>
   <%= javascript_include_tag "clipster/application" %>
   <%= csrf_meta_tags %>
 </head>
