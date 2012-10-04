@@ -1,6 +1,8 @@
 = Clipster
 
-Code snippets before they were cool
+Code snippets before they were cool.
+
+An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing.
 
 == Development
 
