@@ -6,18 +6,18 @@ Code snippets before they were cool
 
 cd into your test application directory's lib folder and run the following
 
-	git clone https://github.com/kwbock/clipster.git
+    git clone https://github.com/kwbock/clipster.git
 
 Add the following to your app's Gemfile
 
-	gem 'clipster', :path => './lib/clipster'
+    gem 'clipster', :path => './lib/clipster'
 
 Add the following to your app's routes.rb
 
-	mount Clipster::Engine, :at => '/clipster'
+    mount Clipster::Engine, :at => '/clipster'
 
 cd to your apps root and run
 
-	rake clipster:install:migrations && rake db:migrate
+    rake clipster:install:migrations && rake db:migrate
 
 Launch your server and navigate to https://localhost:3000/clipster to confirm the engine was mounted correctly
