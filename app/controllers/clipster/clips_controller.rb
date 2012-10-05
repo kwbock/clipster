@@ -5,7 +5,7 @@ module Clipster
     def index
       @clips = Clip.all
 
-      @languages = CodeRay::Scanners.all_plugins
+      @languages = CodeRay::Scanners.all_plugins.map{|lang| lang.title.to_s}
     end
   end
 end
