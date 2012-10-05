@@ -10,8 +10,9 @@
     <label>Language</label>
     <select>
         <option>Select Language:</option>
-        <option>Ruby</option>
-        <option>Python</option>
+        <% @languages.each do |language| %>
+        <option><%= language.title %></option>
+        <% end %>
     </select>
 </div>
 
