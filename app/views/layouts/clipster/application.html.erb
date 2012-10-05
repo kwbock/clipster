@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Clipster</title>
   <%= stylesheet_link_tag    "clipster/bootstrap" %>
@@ -10,8 +10,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><%= link_to "Clipster", root_path %></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <%= yield %>
+    </div>
 </body>
 </html>
