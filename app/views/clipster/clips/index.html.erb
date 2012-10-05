@@ -8,12 +8,8 @@
 
 <div class="span4 offset1 pull-right">
     <label>Language</label>
-    <select>
-        <option>Select Language:</option>
-        <% @languages.each do |language| %>
-        <option><%= language.title %></option>
-        <% end %>
-    </select>
+
+    <%= select("clip", "language", @languages) %>
 </div>
 
 <!-- clip -->
