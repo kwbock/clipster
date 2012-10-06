@@ -1,7 +1,8 @@
 module Clipster
   class Clip < ActiveRecord::Base
     before_create :init_id
-    attr_accessible :clip, :id, :language
+    set_primary_key :id
+    attr_accessible :clip, :language, :title
     
     private
       def init_id

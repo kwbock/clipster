@@ -1,24 +1,28 @@
 <legend>New Clip</legend>
-<!-- title -->
-<div class="span4 offset1">
-    <label>Title</label>
-    <input type="text" />
-</div>
-<!-- /title -->
 
-<div class="span4 offset1 pull-right">
-    <label>Language</label>
-
-    <%= select("clip", "language", @languages, :selected => "Plain text") %>
-</div>
-
-<!-- clip -->
-<div class="span10 offset1">
-    <label>Clip</label>
-    <textarea class="span10" rows=10></textarea>
-</div>
-<!-- /clip -->
-
-<div class="span2 pull-right">
-    <input class="btn btn-primary" type="submit" value="Submit" />
-</div>
+<%= form_for(@clip, :url => { :action =>"create" }) do |f| %>
+  <!-- title -->
+  <div class="span4 offset1">
+    <%= f.label(:title) %>
+    <%= f.text_field(:title) %>
+  </div>
+  <!-- /title -->
+  
+  <!-- language -->
+  <div class="span4 offset1 pull-right">
+    <%= f.label(:language) %>
+    <%= f.select("language", @languages, :selected=>"Plain text") %>
+  </div>
+  <!-- /language -->
+  
+  <!-- clip -->
+  <div class="span10 offset1">
+    <%= f.label(:clip) %>
+    <%= f.text_area(:clip, :class=>"span10", :rows=>"10") %>
+  </div>
+  <!-- /clip -->
+  
+  <div class="span2 pull-right">
+    <%= f.submit(:class=>"btn btn-primary") %>
+  </div>
+<% end %>
