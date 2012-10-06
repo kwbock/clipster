@@ -1,1 +1,6 @@
-<legend><%=@clip.title%></legend>
+<legend>
+  Title: <%=@clip.title%></br>
+  Language: <%=@clip.language%>
+</legend>
+
+<%= CodeRay.scan(@clip.clip, @clip.language).div(:line_numbers => :table).html_safe  %>

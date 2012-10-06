@@ -6,9 +6,9 @@ module Clipster
       @clip = Clip.new
       
       # Get all language's we have syntax for and remove debugging languages.
-      @languages = CodeRay::Scanners.all_plugins.map{|lang| lang.title.to_s}
-      @languages.delete("CodeRay Token Dump")
-      @languages.delete("CodeRay Token Dump Import")
+      @languages = CodeRay::Scanners.all_plugins
+      @languages.delete(CodeRay::Scanners::Raydebug)
+      @languages.delete(CodeRay::Scanners::Debug)
     end
 
     def list

@@ -11,7 +11,7 @@
   <!-- language -->
   <div class="span4 offset1 pull-right">
     <%= f.label(:language) %>
-    <%= f.select("language", @languages, :selected=>"Plain text") %>
+    <%= f.collection_select("language", @languages, :lang, :title, :selected=>"text") %>
   </div>
   <!-- /language -->
   
