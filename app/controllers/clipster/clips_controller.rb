@@ -34,7 +34,7 @@ module Clipster
     end
     
     def show
-      @clip = Clip.where(:url_hash => params[:id]).first
+      @clip = Clip.find_by_url_hash(params[:id])
     end
   end
 end
