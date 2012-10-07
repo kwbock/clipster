@@ -5,6 +5,7 @@ module Clipster
     attr_accessible :clip, :language, :title, :private
     
     validates :clip, :length => {:minimum   => 3}
+    validates :title, :length => {:minimum   => 1}
     
     private
       def init_id
