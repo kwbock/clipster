@@ -15,14 +15,15 @@
                     <div class="nav-collapse collapse">
                         <%= link_to "Clipster", root_path, :class => "brand" %>
                         <ul class="nav">
-                            <li><%= link_to "Recent Clips", list_url %></li>
+                            <li><%= link_to "New Clip", root_path %></li>
+                            <li><%= link_to "Recent Clips", list_path %></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 
+    <%#
     Do we want a header, if so this is how we do it. not sure if needed with fixed navbar
     <header class="jumbotron">
         <div class="container">
@@ -30,7 +31,7 @@
             <p class="lead">Code snippets before they were cool</p>
         </div>
     </header> 
-    -->
+    %>
     <div class="container">
         <div class="row">
             <div class="span12">

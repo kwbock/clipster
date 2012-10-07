@@ -10,7 +10,7 @@ module Clipster
     def list
       # get all clips, with the newest clip first
       # TODO: look into pagination and any other info
-      @clips = Clip.find(:all, :order => 'created_at DESC')
+      @clips = Clip.where(:private => false).order('created_at DESC')
     end
     
     def create
