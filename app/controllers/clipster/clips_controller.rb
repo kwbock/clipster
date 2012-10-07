@@ -19,18 +19,22 @@ module Clipster
         @clip = Clip.new(params[:clip])
         if @clip.valid?
           @clip.save
-          redirect_to(@clip)
-        else
-          # Get all language's we have syntax for and remove debugging languages.
-          @languages = CodeRay::Scanners.all_plugins
-          @languages.delete(CodeRay::Scanners::Raydebug)
-          @languages.delete(CodeRay::Scanners::Debug)
-          render "index"
+          
+          # craft url based on url_hash
+          # TODO: look for cleaner way to do this as well as the select
+          redirect_to :action => "show", :id => @clip.url_hash
+          return #early return so we don't have else statement
         end
+
+        # Get all language's we have syntax for and remove debugging languages.
+        @languages = CodeRay::Scanners.all_plugins
+        @languages.delete(CodeRay::Scanners::Raydebug)
+        @languages.delete(CodeRay::Scanners::Debug)
+        render "index"
     end
     
     def show
-      @clip = Clip.find(params[:id])
+      @clip = Clip.where(:url_hash => params[:id]).first
     end
   end
 end
