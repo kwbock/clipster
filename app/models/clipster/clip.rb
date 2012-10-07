@@ -1,7 +1,7 @@
 module Clipster
   class Clip < ActiveRecord::Base
     before_create :init_id
-    set_primary_key :id
+    self.primary_key = :url_hash
     attr_accessible :clip, :language, :title, :private
     
     validates :clip, :length => {:minimum   => 3}

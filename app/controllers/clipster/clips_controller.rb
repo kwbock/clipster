@@ -17,10 +17,7 @@ module Clipster
       #only do validation if something was actually posted.
       if !params[:clip].nil? && @clip.valid?
         @clip.save
-        
-        # craft url based on url_hash
-        # TODO: look for cleaner way to do this as well as the select
-        redirect_to :action => "show", :id => @clip.url_hash
+        redirect_to @clip
         return #early return so we don't have else statement
       end
       
