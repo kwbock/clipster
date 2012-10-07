@@ -16,9 +16,17 @@ module Clipster
     end
     
     def create
-      @clip = Clip.new(params[:clip])
-      @clip.save
-      redirect_to(@clip)
+        @clip = Clip.new(params[:clip])
+        if @clip.valid?
+          @clip.save
+          redirect_to(@clip)
+        else
+          # Get all language's we have syntax for and remove debugging languages.
+          @languages = CodeRay::Scanners.all_plugins
+          @languages.delete(CodeRay::Scanners::Raydebug)
+          @languages.delete(CodeRay::Scanners::Debug)
+          render "index"
+        end
     end
     
     def show

@@ -1,31 +1,33 @@
 <legend>New Clip</legend>
 
 <%= form_for(@clip, :url => { :action =>"create" }) do |f| %>
+  <%= f.error_messages %>
+  
   <!-- title -->
   <div class="span4 offset1">
     <%= f.label(:title) %>
-    <%= f.text_field(:title) %>
+    <%= f.text_field(:title, :value=>@clip.title) %>
   </div>
   <!-- /title -->
   
   <!-- language -->
   <div class="span4 offset1 pull-right">
     <%= f.label(:language) %>
-    <%= f.collection_select("language", @languages, :lang, :title, :selected=>"text") %>
+    <%= f.collection_select("language", @languages, :lang, :title, :selected=>(@clip.language || "text")) %>
   </div>
   <!-- /language -->
   
   <!-- clip -->
   <div class="span10 offset1">
     <%= f.label(:clip) %>
-    <%= f.text_area(:clip, :class=>"span10", :rows=>"10") %>
+    <%= f.text_area(:clip, :class=>"span10", :rows=>"10", :value=>@clip.clip) %>
   </div>
   <!-- /clip -->
   
   <!-- private -->
   <div class="span4 offset1">
     <%= f.label(:private) %>
-    <%= f.check_box(:private) %>
+    <%= f.check_box(:private, :value=>@clip.private) %>
   </div>
   <!-- /private -->
   
