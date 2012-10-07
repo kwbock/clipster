@@ -28,7 +28,7 @@ module Clipster
     end
     
     def show
-      @clip = Clip.find_by_url_hash(params[:id])
+      @clip = Clip.find(params[:id])
       cr_scanner = CodeRay.scan(@clip.clip, @clip.language)
 
       # Only show line numbers if its greater than 1
