@@ -8,7 +8,7 @@ module Clipster
     
     private
       def init_id
-        self.id = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
+        self.url_hash = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
       end
   end
 end
