@@ -32,6 +32,15 @@ module Clipster
     
     def show
       @clip = Clip.find_by_url_hash(params[:id])
+      @clip_div = CodeRay.scan(@clip.clip, @clip.language)
+      
+      # Only show line numbers if its greater than 1
+      line_count = @clip_div.loc
+      if line_count > 1
+        @clip_div = @clip_div.div(:line_numbers => :table)
+      else
+        @clip_div = @clip_div.div
+      end
     end
   end
 end

@@ -3,4 +3,4 @@
   Language: <%=@clip.language%>
 </legend>
 
-<%= CodeRay.scan(@clip.clip, @clip.language).div(:line_numbers => :table).html_safe  %>
+<%= @clip_div.html_safe  %>
