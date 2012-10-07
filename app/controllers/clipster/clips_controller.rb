@@ -8,7 +8,9 @@ module Clipster
     end
 
     def list
-      #list all or recent clips
+      # get all clips, with the newest clip first
+      # TODO: look into pagination and any other info
+      @clips = Clip.find(:all, :order => 'created_at DESC')
     end
     
     def create
