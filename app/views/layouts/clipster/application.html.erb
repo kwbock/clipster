@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Clipster</title>
   <%= stylesheet_link_tag    "clipster/application", :media => "all" %>
+
   <%= javascript_include_tag "clipster/application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+    <div class="container">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse collapse">
+                        <%= link_to "Clipster", root_path, :class => "brand" %>
+                        <ul class="nav">
+                            <li><%= link_to "New Clip", root_path %></li>
+                            <li><%= link_to "Recent Clips", list_path %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%#
+    Do we want a header, if so this is how we do it. not sure if needed with fixed navbar
+    <header class="jumbotron">
+        <div class="container">
+            <h3>Clipster</h3>
+            <p class="lead">Code snippets before they were cool</p>
+        </div>
+    </header> 
+    %>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <%= yield %>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
