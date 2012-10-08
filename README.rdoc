@@ -40,3 +40,8 @@ cd to your apps root and run
     rake clipster:install:migrations && rake db:migrate
 
 Launch your server and navigate to https://localhost:3000/clipster to confirm the engine was mounted correctly
+
+
+=== Todos
+
+Look into adding authentication and user role handling, specifically the ability to tie clips to users. (targetting devise first)
