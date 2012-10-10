@@ -11,6 +11,11 @@ module Clipster
       # get all clips, with the newest clip first
       # TODO: look into pagination and any other info
       @clips = Clip.where(:private => false).order('created_at DESC')
+
+      # you have to love the activerelation queries don't you
+      # should probably move to one query for performance if that becomes an issue
+      # or we have a large clipset
+      @clips = @clips.where(:language => params[:lang]) unless params[:lang].nil?
     end
     
     def create
