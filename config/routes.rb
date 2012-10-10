@@ -4,7 +4,7 @@ Clipster::Engine.routes.draw do
   resources :clips, :path => "/" do
     collection do
       get 'list', :action => :list
-      get 'list(/:lang)', :action => :list
+      get 'list(/:lang)(.:format)', :action => :list
     end
   end
 

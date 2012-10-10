@@ -1,6 +1,5 @@
 <legend>Recent Clips</legend>
-<div class="span7 offset2">
-
+<div class="span7">
     <table class="table table-striped table-bordered table-hover span6">
         <thead>
             <tr>
@@ -31,3 +30,9 @@
         </tbody>
     </table>
 </div>
+<aside class="languages bordered span3 offset1">
+    <div class="title">Languages</div>
+    <% @languages.each do |lang| %>
+    <div><%= link_to lang.language, list_clips_path(:lang => lang.language) %> (<%= lang.count %>)</div>
+    <% end %>
+</aside>
