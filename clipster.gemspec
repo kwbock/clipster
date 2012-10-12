@@ -11,11 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["kylewbock@gmail.com"]
   s.homepage    = "http://github.com/kwbock/clipster"
   s.summary     = "Provides sharable clipboard functionality via an engine to an existing rails app."
-  s.description = "Cipster is in beta currently. We are actively adding more features to it. 
-                   The 0.1.0 should add basic code snippet functionality within your app. To use Clipster,
-                   add clipster to your Gemfile, bundle install,  then add 
-                   'mount Clipster::Engine, :at => \"/clipster\"' to your routes.rb file. You should now have 
-                   clipster available to you at /clipster"
+  s.description = "Code clips before they were cool. See README for deployment information"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

@@ -11,6 +11,13 @@ module Clipster
       # get all clips, with the newest clip first
       # TODO: look into pagination and any other info
       @clips = Clip.where(:private => false).order('created_at DESC')
+
+      # you have to love the activerelation queries don't you
+      # should probably move to one query for performance if that becomes an issue
+      # or we have a large
+      @clips = @clips.where(:language => params[:lang]) unless params[:lang].nil?
+
+      @languages = Clip.select("language, count(*) as count").group(:language)
     end
     
     def create
@@ -24,9 +31,7 @@ module Clipster
       end
       
       # Get all languages we have syntax for and remove debugging languages.
-      @languages = CodeRay::Scanners.all_plugins
-      @languages.delete(CodeRay::Scanners::Raydebug)
-      @languages.delete(CodeRay::Scanners::Debug)
+      @languages = get_languages
     end
     
     def show
@@ -36,6 +41,27 @@ module Clipster
       # Only show line numbers if its greater than 1
       @clip_div = cr_scanner.div
       @clip_div = cr_scanner.div(:line_numbers => :table) unless cr_scanner.loc <= 1
+    end
+
+    def search
+      @clips = Clip.search(params[:search_term])
+
+      p '\n\n\n\n'
+      p @clips
+
+      @languages = Clip.select("language, count(*) as count").group(:language)
+
+      render 'list' unless @clips.nil?  
+    end
+
+    private
+
+    def get_languages
+      languages = CodeRay::Scanners.all_plugins
+      languages.delete(CodeRay::Scanners::Raydebug)
+      languages.delete(CodeRay::Scanners::Debug)
+
+      languages
     end
   end
 end

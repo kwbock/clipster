@@ -1,0 +1,10 @@
+2012-10-12 - Release 0.2.0
+    * added search functionality with search form in nav bar
+    * added list by language routes and table. table shown in list and search results views.
+
+2012-10-07 - Release 0.1.1
+    * Hotfixed README.rdoc to add missing deployment step
+
+2012-10-07 - Release 0.1.0
+    * Released version 0.1.0 to RubyGems
+    * contains full clipster functionality

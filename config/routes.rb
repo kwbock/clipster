@@ -1,8 +1,13 @@
 Clipster::Engine.routes.draw do
   #/clipster route
   
-  get "list", :to => "clips#list"
-  resources :clips, :path => "/"
+  resources :clips, :path => "/" do
+    collection do
+      get 'list', :action => :list
+      get 'list(/:lang)(.:format)', :action => :list
+      get 'search', :action => :search
+    end
+  end
 
   root :to => :clips
 end
