@@ -4,6 +4,8 @@ module Clipster
     self.primary_key = :url_hash
     attr_accessible :clip, :language, :title, :private
 
+    # scope utilized by search functionality.
+    # TODO: build more powerful search term creation
     scope :search, lambda {|term| 
       where("title LIKE :term or language LIKE :term or clip LIKE :term",{
           :term => term
