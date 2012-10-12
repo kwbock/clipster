@@ -43,6 +43,17 @@ module Clipster
       @clip_div = cr_scanner.div(:line_numbers => :table) unless cr_scanner.loc <= 1
     end
 
+    def search
+      @clips = Clip.search(params[:search_term])
+
+      p '\n\n\n\n'
+      p @clips
+
+      @languages = Clip.select("language, count(*) as count").group(:language)
+
+      render 'list' unless @clips.nil?  
+    end
+
     private
 
     def get_languages

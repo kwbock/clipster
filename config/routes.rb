@@ -5,6 +5,7 @@ Clipster::Engine.routes.draw do
     collection do
       get 'list', :action => :list
       get 'list(/:lang)(.:format)', :action => :list
+      get 'search', :action => :search
     end
   end
 
