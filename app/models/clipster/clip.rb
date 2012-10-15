@@ -3,6 +3,14 @@ module Clipster
     before_create :init_id
     self.primary_key = :url_hash
     attr_accessible :clip, :language, :title, :private
+
+    # scope utilized by search functionality.
+    # TODO: build more powerful search term creation
+    scope :search, lambda {|term| 
+      where("title LIKE :term or language LIKE :term or clip LIKE :term",{
+          :term => term
+      })
+    }
     
     validates :clip, :length => {:minimum   => 3}
     validates :title, :length => {:minimum   => 1}
