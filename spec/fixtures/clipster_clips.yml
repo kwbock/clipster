@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  url_hash: abc
+  clip: puts :foobar
+  language: ruby
+  title: Foobar
+  private: false
+  created_at: <%= 1.days.ago.to_s :db %>
+  updated_at: <%= 1.days.ago.to_s :db %>
+
+two:
+  id: 2
+  url_hash: def
+  clip: print 'test'
+  language: python
+  title: Hello
+  private: false
+  created_at: <%= 2.days.ago.to_s :db %>
+  updated_at: <%= 2.days.ago.to_s :db %>
