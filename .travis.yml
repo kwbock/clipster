@@ -1,0 +1,9 @@
+language: ruby
+script: "bundle exec rspec spec"
+rvm:
+  - 1.9.3
+gemfile:
+  - Gemfile
+notifications:
+  recipients:
+    - kylewbock@gmail.com
