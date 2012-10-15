@@ -1,5 +1,7 @@
 = Clipster
 
+{<img src="https://secure.travis-ci.org/kwbock/clipster.png" alt="Build Status" />}[http://travis-ci.org/kwbock/clipster]
+
 Code snippets before they were cool.
 
 An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing.

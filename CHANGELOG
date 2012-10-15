@@ -1,3 +1,7 @@
+2012-10-15 - Release 0.2.1
+    * converted tests to rspec and added first test
+    * added travis-ci file
+
 2012-10-12 - Release 0.2.0
     * added search functionality with search form in nav bar
     * added list by language routes and table. table shown in list and search results views.
