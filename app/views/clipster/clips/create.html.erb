@@ -6,7 +6,7 @@
   <!-- title -->
   <div class="span4 offset1">
     <%= f.label(:title) %>
-    <%= f.text_field(:title, :value => @clip.title) %>
+    <%= f.text_field(:title, :value => @clip.title, :required=>"required") %>
   </div>
   <!-- /title -->
   
@@ -20,7 +20,7 @@
   <!-- clip -->
   <div class="span10 offset1">
     <%= f.label(:clip) %>
-    <%= f.text_area(:clip, :class=>"span10", :rows=>"10", :value => @clip.clip) %>
+    <%= f.text_area(:clip, :class=>"span10", :rows=>"10", :value => @clip.clip, :required=>"required") %>
   </div>
   <!-- /clip -->
   

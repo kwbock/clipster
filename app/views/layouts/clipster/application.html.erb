@@ -20,7 +20,7 @@
                         </ul>
                         <!-- <form class="navbar-search pull-right"> -->
                         <%= form_tag(search_clips_path, :method => 'get', :class => 'navbar-search pull-right') do %>
-                            <input type="text" class="search-query" name="search_term"placeholder="Search">
+                             <%= text_field_tag(:search_term, "", :class=>"search-query", :placeholder=>"Search") %> 
                         <% end %>
 
                     </div>
