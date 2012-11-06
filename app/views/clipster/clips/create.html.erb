@@ -4,32 +4,39 @@
   <%= f.error_messages %>
   
   <!-- title -->
-  <div class="span4 offset1">
+  <div class="span1 offset1">
     <%= f.label(:title) %>
     <%= f.text_field(:title, :value => @clip.title, :required=>"required") %>
   </div>
   <!-- /title -->
   
   <!-- language -->
-  <div class="span4 offset1 pull-right">
+  <div class="span1 offset2">
     <%= f.label(:language) %>
     <%= f.collection_select("language", @languages, :lang, :title, :selected => (@clip.language || "text")) %>
   </div>
   <!-- /language -->
   
-  <!-- clip -->
-  <div class="span10 offset1">
-    <%= f.label(:clip) %>
-    <%= f.text_area(:clip, :class=>"span10", :rows=>"10", :value => @clip.clip, :required=>"required") %>
+  <!-- lifespan -->
+  <div class="span1 offset2">
+    <%= f.label(:lifespan) %>
+    <%= f.select(:expires, @lifespans) %>
   </div>
-  <!-- /clip -->
+  <!-- /lifespan -->
   
   <!-- private -->
-  <div class="span4 offset1">
+  <div class="span1 offset2">
     <%= f.label(:private) %>
     <%= f.check_box(:private, :value => @clip.private) %>
   </div>
   <!-- /private -->
+  
+  <!-- clip -->
+  <div class="span10 offset1">
+    <%= f.label(:clip) %>
+    <%= f.text_area(:clip, :class=>"span10", :rows=>"15", :value => @clip.clip, :required=>"required") %>
+  </div>
+  <!-- /clip -->
   
   <div class="span2 pull-right">
     <%= f.submit(:class=>"btn btn-primary") %>

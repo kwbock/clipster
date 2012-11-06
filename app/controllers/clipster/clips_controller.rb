@@ -22,6 +22,7 @@ module Clipster
     
     def create
       @clip = Clip.new(params[:clip])
+      @lifespans = ["Forever", "An Hour", "A Day", "A Month", "A Year"]
       
       #only do validation if something was actually posted.
       if !params[:clip].nil? && @clip.valid?
