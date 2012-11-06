@@ -1,6 +1,7 @@
 <legend>
   Title: <%=@clip.title%></br>
-  Language: <%=@clip.language%>
+  Language: <%=@clip.language%></br>
+  Expires: <%= @clip.lifespan %>
 </legend>
 
 <%= @clip_div.html_safe  %>
