@@ -43,7 +43,8 @@ Add the following to your app's routes.rb
 
 cd to your apps root and run
 
-    rake clipster:install:migrations && rake db:migrate
+    rake clipster:install:migrations
+    rake db:migrate
 
 Launch your server and navigate to https://localhost:3000/clipster to confirm the engine was mounted correctly
 
