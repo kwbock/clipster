@@ -6,7 +6,9 @@ module Clipster
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
     cattr_reader :lifespans
     
-    @@lifespans = {"An Hour" => {:hours=>1},
+    # Define all supported lifespans and their time offset 
+    @@lifespans = {"Forever" => nil,
+                   "An Hour" => {:hours=>1},
                    "A Week"  => {:days=>7},
                    "A Day"   => {:days=>1},
                    "A Month" => {:months=>1},
@@ -25,7 +27,9 @@ module Clipster
     validates :title, :length => {:minimum   => 1}
     
     def lifespan=(lifespan)
-      self.expires = DateTime.now.advance(@@lifespans[lifespan])
+      unless @@lifespans[lifespan].nil?
+        self.expires = DateTime.now.advance(@@lifespans[lifespan])
+      end
     end
     
     def lifespan
