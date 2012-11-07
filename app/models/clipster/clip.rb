@@ -34,6 +34,10 @@ module Clipster
       end
     end
     
+    def Clip.delete_expired_clips
+      Clip.destroy_all(["expires is not null AND expires <= ?", DateTime.now])
+    end
+    
     private
       def init_id
         self.url_hash = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
