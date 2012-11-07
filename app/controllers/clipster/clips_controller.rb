@@ -15,7 +15,10 @@ module Clipster
       # you have to love the activerelation queries don't you
       # should probably move to one query for performance if that becomes an issue
       # or we have a large
-      @clips = @clips.where(:language => params[:lang]) unless params[:lang].nil?
+      @clips = @clips.where("language = :lang and (expires is null OR expires > :now)",{
+          :lang => params[:lang],
+          :now => DateTime.now
+      }) unless params[:lang].nil?
 
       @languages = Clip.select("language, count(*) as count").group(:language)
     end
@@ -35,7 +38,16 @@ module Clipster
     end
     
     def show
-      @clip = Clip.find(params[:id])
+      @clip = Clip.where("url_hash = :id and (expires is null OR expires > :now)",{
+          :id => params[:id],
+          :now => DateTime.now
+      }).first
+      
+      if @clip.nil?
+        render :expired #clip doesn't exist or has expired
+        return
+      end
+      
       cr_scanner = CodeRay.scan(@clip.clip, @clip.language)
 
       # Only show line numbers if its greater than 1
