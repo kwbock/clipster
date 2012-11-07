@@ -25,7 +25,7 @@ describe Clipster::ClipsController do
     # check that all fields from fixture were rendered correctly
     response.body.should =~ /Foobar/
     #response.body.should =~ /puts :foobar/
-    response.body.should =~ /ruby/
+    response.body.should =~ /Ruby/
   end
 
   # Testing list/ view

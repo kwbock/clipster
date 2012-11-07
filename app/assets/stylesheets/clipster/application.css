@@ -14,3 +14,15 @@
 body { 
     padding-top: 65px; 
 }
+
+.no-left {
+    margin-left: 0 !important;
+}
+
+.clearfix {
+    clear:both;
+}
+
+.secondary {
+    font-size:16px;
+}

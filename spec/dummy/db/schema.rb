@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007223631) do
+ActiveRecord::Schema.define(:version => 20121105212724) do
 
   create_table "clipster_clips", :force => true do |t|
     t.string   "url_hash",   :default => "",         :null => false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20121007223631) do
     t.boolean  "private",    :default => false,      :null => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.datetime "expires"
   end
 
   add_index "clipster_clips", ["url_hash"], :name => "index_clipster_clips_on_hash", :unique => true
