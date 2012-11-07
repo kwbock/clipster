@@ -4,6 +4,13 @@ module Clipster
     before_create :init_id
     self.primary_key = :url_hash
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
+    cattr_reader :lifespans
+    
+    @@lifespans = {"An Hour" => {:hours=>1},
+                   "A Week"  => {:days=>7},
+                   "A Day"   => {:days=>1},
+                   "A Month" => {:months=>1},
+                   "A Year"  => {:years=>1}}
     
     # scope utilized by search functionality.
     # TODO: build more powerful search term creation
@@ -18,12 +25,7 @@ module Clipster
     validates :title, :length => {:minimum   => 1}
     
     def lifespan=(lifespan)
-      case lifespan
-        when "An Hour" then self.expires = DateTime.now.advance(:hours=>1)
-        when "A Day"   then self.expires = DateTime.now.advance(:days=>1)
-        when "A Month" then self.expires = DateTime.now.advance(:months=>1)
-        when "A Year"  then self.expires = DateTime.now.advance(:years=>1)
-      end
+      self.expires = DateTime.now.advance(@@lifespans[lifespan])
     end
     
     def lifespan
