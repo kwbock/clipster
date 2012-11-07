@@ -4,32 +4,35 @@
   <%= f.error_messages %>
   
   <!-- title -->
-  <div class="span1 offset1">
-    <%= f.label(:title) %>
-    <%= f.text_field(:title, :value => @clip.title, :required=>"required") %>
+  <div class="span5 offset1">
+    <div class="span4 no-left">
+      <%= f.label(:title) %>
+      <%= f.text_field(:title, :value => @clip.title, :required=>"required") %>
+    </div>
+    <!-- /title -->
+    
+    <!-- language -->
+    <div class="span4 no-left">
+      <%= f.label(:language) %>
+      <%= f.collection_select("language", @languages, :lang, :title, :selected => (@clip.language || "text")) %>
+    </div>
+    <!-- /language -->
   </div>
-  <!-- /title -->
-  
-  <!-- language -->
-  <div class="span1 offset2">
-    <%= f.label(:language) %>
-    <%= f.collection_select("language", @languages, :lang, :title, :selected => (@clip.language || "text")) %>
+  <div class="span5 offset1 pull-right no-left">
+    <!-- lifespan -->
+    <div class="span4">
+      <%= f.label(:lifespan) %>
+      <%= f.select(:lifespan, @clip.lifespans) %>
+    </div>
+    <!-- /lifespan -->
+    
+    <!-- private -->
+    <div class="span4">
+      <%= f.label(:private) %>
+      <%= f.check_box(:private, :value => @clip.private) %>
+    </div>
+    <!-- /private -->
   </div>
-  <!-- /language -->
-  
-  <!-- lifespan -->
-  <div class="span1 offset2">
-    <%= f.label(:lifespan) %>
-    <%= f.select(:lifespan, @clip.lifespans) %>
-  </div>
-  <!-- /lifespan -->
-  
-  <!-- private -->
-  <div class="span1 offset2">
-    <%= f.label(:private) %>
-    <%= f.check_box(:private, :value => @clip.private) %>
-  </div>
-  <!-- /private -->
   
   <!-- clip -->
   <div class="span10 offset1">
