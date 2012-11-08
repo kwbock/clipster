@@ -66,6 +66,9 @@ module Clipster
       render 'list' unless @clips.nil?  
     end
 
+    def about
+    end
+    
     private
 
     def get_languages
