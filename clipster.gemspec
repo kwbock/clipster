@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "dynamic_form"
   s.add_dependency "jquery-rails"
   s.add_dependency "whenever"
+  s.add_dependency "kaminari"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

@@ -9,18 +9,13 @@ module Clipster
 
     def list
       # get all clips, with the newest clip first
-      # TODO: look into pagination and any other info
-      @clips = Clip.where(:private => false).order('created_at DESC')
-
-      # you have to love the activerelation queries don't you
-      # should probably move to one query for performance if that becomes an issue
-      # or we have a large
-      @clips = @clips.where("language = :lang and (expires is null OR expires > :now)",{
-          :lang => params[:lang],
-          :now => DateTime.now
-      }) unless params[:lang].nil?
-
-      @languages = Clip.select("language, count(*) as count").group(:language)
+      if params[:lang].nil?
+        @clips = Clip.public.order('created_at DESC').page(params[:page])
+      else
+        @clips = Clip.language_for_public(params[:lang]).order('created_at DESC').page(params[:page])
+      end
+      
+      @languages = Clip.public.select("language, count(*) as count").group(:language)
     end
     
     def create
@@ -44,7 +39,10 @@ module Clipster
       }).first
       
       if @clip.nil?
-        render :expired #clip doesn't exist or has expired
+        # Most likely the clip is expired, take advantage of this time to
+        # clean up all expired clips, then display error page
+        Clip.delete_expired_clips
+        render :expired
         return
       end
       
