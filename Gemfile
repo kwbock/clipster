@@ -17,6 +17,9 @@ gem "dynamic_form"
 # Cleaning up expired clips
 gem "whenever"
 
+# Pagination
+gem "kaminari"
+
 gem 'rspec-rails', github: 'rspec/rspec-rails'
 
 # Declare any dependencies that are still in development here instead of in
