@@ -1,5 +1,6 @@
 require 'coderay'
 require 'dynamic_form'
+require 'kaminari'
 
 module Clipster
   class Engine < ::Rails::Engine

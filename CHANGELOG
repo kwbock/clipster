@@ -1,5 +1,7 @@
 ? - Release 0.3.0
     * Added expiring clips.
+    * Added pagination in 'Recent Clips' list.
+    * Added and an 'About' page.
     * Rearranged items on create and view pages. 
     * Added 'required' attribute to create clip form.
 
