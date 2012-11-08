@@ -12,6 +12,9 @@
                 <th>
                     Created On
                 </th>
+                <th>
+                    Expires
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +23,7 @@
                 <td><%= link_to clip.title, clip %></td>
                 <td><%= clip.language %></td>
                 <td><%= l clip.created_at, :format => :short %></td>
+                <td><%= clip.lifespan %></td>
             </tr>
             <% end %>
             <% unless @clips.length > 0 %>
@@ -29,6 +33,8 @@
             <% end %>
         </tbody>
     </table>
+    <div class="clearfix"></div>
+    <%= paginate @clips %>
 </div>
 <aside class="languages bordered span3 offset1">
     <div class="title">Languages</div>

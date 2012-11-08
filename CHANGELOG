@@ -1,3 +1,10 @@
+2012-11-08 - Release 0.3.0
+    * Added expiring clips.
+    * Added pagination in 'Recent Clips' list.
+    * Added and an 'About' page.
+    * Rearranged items on create and view pages. 
+    * Added 'required' attribute to create clip form.
+
 2012-10-15 - Release 0.2.1
     * converted tests to rspec and added first test
     * added travis-ci file
