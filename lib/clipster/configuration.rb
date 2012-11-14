@@ -8,7 +8,7 @@ module Clipster
     end
 
     def user_class
-      @user_class.constantize || "User".constanize
+      @user_class.constantize || "User".constantize
     end
 
     def user_class=(user_class)
