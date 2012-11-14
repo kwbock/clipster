@@ -2,7 +2,7 @@ module Clipster
   class Clip < ActiveRecord::Base
     include ActionView::Helpers::DateHelper
 
-    set_primary_key :url_hash
+    self.primary_key = :url_hash
 
     before_create :default_values
 
