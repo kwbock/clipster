@@ -19,7 +19,7 @@
                             <li><%= link_to "Recent Clips", :action=>:list %></li>
                             <li><%= link_to "About", :action=>:about %></li>
                             <% if Clipster.config.associates_clip_with_user %>
-                            <li><%= Clipster.config.user_class %></li>
+                            <li><a href="javascript:void(0);"><%= Clipster.config.user_class %></a></li>
                             <% end %>
                         </ul>
                         <!-- <form class="navbar-search pull-right"> -->
@@ -41,8 +41,15 @@
         </div>
     </header>
     %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="flash">
+        <% if notice %>
+        <p class="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+        <p class="alert"><%= alert %></p>
+        <% end -%>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="span12">
