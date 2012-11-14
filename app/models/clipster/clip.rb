@@ -6,6 +6,7 @@ module Clipster
 
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
     cattr_reader :lifespans
+    cattr_accessor :current_user
 
     belongs_to :user, :class_name => Clipster.config.user_class.to_s unless not Clipster.config.associates_clip_with_user
 
@@ -73,6 +74,7 @@ module Clipster
 
     private
       def default_values
+        self.user_id = self.current_user unless not Clipster.config.associates_clip_with_user
         self.url_hash = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
       end
   end

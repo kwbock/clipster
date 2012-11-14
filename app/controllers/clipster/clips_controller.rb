@@ -23,7 +23,6 @@ module Clipster
 
       #only do validation if something was actually posted.
       if !params[:clip].nil? && @clip.valid?
-        @clip.user_id = current_user.id unless not Clipster.config.associates_clip_with_user
         @clip.save
         redirect_to @clip
         return #early return so we don't have else statement
