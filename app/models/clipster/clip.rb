@@ -2,6 +2,8 @@ module Clipster
   class Clip < ActiveRecord::Base
     include ActionView::Helpers::DateHelper
 
+    set_primary_key = :url_hash
+
     before_create :default_values
 
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
@@ -10,7 +12,8 @@ module Clipster
 
     belongs_to :user, :class_name => Clipster.config.user_class.to_s unless not Clipster.config.associates_clip_with_user
 
-    self.primary_key = :url_hash
+    validates :clip, :length => {:minimum   => 3}
+    validates :title, :length => {:minimum   => 1}
 
     # Define all supported lifespans and their time offset
     @@lifespans = {"Forever" => nil,
@@ -47,9 +50,6 @@ module Clipster
           :now  => DateTime.now
       })
     }
-
-    validates :clip, :length => {:minimum   => 3}
-    validates :title, :length => {:minimum   => 1}
 
     # Setter to convert user's choice of 'A Week', etc. to an actual DateTime
     def lifespan=(lifespan)
