@@ -12,4 +12,12 @@ module Clipster
       g.integration_tool :rspec
     end
   end
+
+  def self.config (&block)
+    @@config ||= Clipster::Configuration.new
+
+    yield @@config if block
+
+    return @@config
+  end
 end
