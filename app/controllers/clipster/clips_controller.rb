@@ -54,7 +54,7 @@ module Clipster
     end
 
     def search
-      @clips = Clip.search(params[:search_term])
+      @clips = Clip.search(params[:search_term]).page(params[:page])
 
       p '\n\n\n\n'
       p @clips
