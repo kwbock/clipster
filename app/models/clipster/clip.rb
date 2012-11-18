@@ -16,12 +16,12 @@ module Clipster
     validates :title, :length => {:minimum   => 1}
 
     # Define all supported lifespans and their time offset
-    @@lifespans = {"Forever" => nil,
-                   "An Hour" => {:hours=>1},
-                   "A Week"  => {:days=>7},
-                   "A Day"   => {:days=>1},
-                   "A Month" => {:months=>1},
-                   "A Year"  => {:years=>1}}
+    @@lifespans = [["Forever", nil],
+                   ["An Hour", :hours=>1],
+                   ["A Week", :days=>7],
+                   ["A Day", :days=>1],
+                   ["A Month", :months=>1],
+                   ["A Year", :years=>1]]
 
     # TODO: build more powerful search term creation
     scope :search, lambda {|term|
@@ -54,8 +54,10 @@ module Clipster
     # Setter to convert user's choice of 'A Week', etc. to an actual DateTime
     def lifespan=(lifespan)
       @lifespan = lifespan
-      unless @@lifespans[lifespan].nil?
-        self.expires = DateTime.now.advance(@@lifespans[lifespan])
+      @@lifespans.each_with_index do |span, index|
+        if span[0] == lifespan
+          self.expires = DateTime.now.advance(@@lifespans[index][1])
+        end
       end
     end
     
