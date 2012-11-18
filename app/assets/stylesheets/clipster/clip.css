@@ -20,3 +20,7 @@
 .title {
     border-bottom: 1px solid #ddd;
 }
+
+.help-tip label{
+    display: inline;
+}
