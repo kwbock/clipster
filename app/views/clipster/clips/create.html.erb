@@ -22,7 +22,7 @@
     <!-- lifespan -->
     <div class="span4">
       <%= f.label(:lifespan) %>
-      <%= f.select(:lifespan, @clip.lifespans) %>
+      <%= f.select(:lifespan, @clip.lifespans, :selected=>(@clip.lifespan || "Forever")) %>
     </div>
     <!-- /lifespan -->
     

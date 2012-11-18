@@ -8,7 +8,7 @@ module Clipster
 
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
     cattr_reader :lifespans
-    cattr_accessor :current_user
+    cattr_accessor :current_user, :lifespan
 
     belongs_to :user, :class_name => Clipster.config.user_class.to_s unless not Clipster.config.associates_clip_with_user
 
@@ -53,17 +53,22 @@ module Clipster
 
     # Setter to convert user's choice of 'A Week', etc. to an actual DateTime
     def lifespan=(lifespan)
+      @lifespan = lifespan
       unless @@lifespans[lifespan].nil?
         self.expires = DateTime.now.advance(@@lifespans[lifespan])
       end
     end
-
-    # Getter to convert an expire date to '1 Month', '1 Year', etc.
+    
     def lifespan
+      @lifespan
+    end
+    
+    # Getter to convert an expire date to '1 Month', '1 Year', etc.
+    def expires_in_words
       unless self.expires.nil?
-        time_ago_in_words(self.expires)
+        time_ago_in_words(self.expires).humanize
       else
-        "the end of time"
+        "The end of time"
       end
     end
 

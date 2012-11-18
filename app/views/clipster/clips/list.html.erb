@@ -21,9 +21,9 @@
             <% @clips.each do |clip| %>
             <tr>
                 <td><%= link_to clip.title, clip %></td>
-                <td><%= clip.language %></td>
+                <td><%= clip.language.capitalize %></td>
                 <td><%= l clip.created_at, :format => :short %></td>
-                <td><%= clip.lifespan %></td>
+                <td><%= clip.expires_in_words %></td>
             </tr>
             <% end %>
             <% unless @clips.length > 0 %>
