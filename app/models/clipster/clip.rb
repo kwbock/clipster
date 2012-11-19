@@ -66,6 +66,17 @@ module Clipster
       Clip.destroy_all(["expires is not null AND expires <= ?", DateTime.now])
     end
     
+    # Creates the div for the clip
+    def div
+      cr_scanner = CodeRay.scan(self.clip, self.language)
+      # Only show line numbers if its greater than 1
+      if cr_scanner.loc <= 1
+        return cr_scanner.div
+      else
+        return cr_scanner.div(:line_numbers => :table)
+      end
+    end
+    
     private
       def init_id
         self.url_hash = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
