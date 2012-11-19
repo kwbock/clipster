@@ -20,3 +20,9 @@
 .title {
     border-bottom: 1px solid #ddd;
 }
+
+.image-feed {
+    width: 14px;
+    height: 14px;
+    background:url("../Clipster/rss_logo_small.png");
+}
