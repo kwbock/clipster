@@ -14,8 +14,14 @@ module Clipster
       else
         @clips = Clip.language_for_public(params[:lang]).order('created_at DESC').page(params[:page])
       end
-      
+
       @languages = Clip.public.select("language, count(*) as count").group(:language)
+      @updated_at = @clips.first.updated_at unless @clips.empty?
+      
+      respond_to do |format|
+        format.html
+        format.atom
+      end
     end
     
     def create
@@ -45,12 +51,6 @@ module Clipster
         render :expired
         return
       end
-      
-      cr_scanner = CodeRay.scan(@clip.clip, @clip.language)
-
-      # Only show line numbers if its greater than 1
-      @clip_div = cr_scanner.div
-      @clip_div = cr_scanner.div(:line_numbers => :table) unless cr_scanner.loc <= 1
     end
 
     def search
