@@ -15,9 +15,9 @@
                     <div class="nav-collapse collapse">
                         <%= link_to "Clipster", root_path, :class => "brand" %>
                         <ul class="nav">
-                            <li><%= link_to "New Clip", :action=>:create %></li>
-                            <li><%= link_to "Recent Clips", :action=>:list %></li>
-                            <li><%= link_to "About", :action=>:about %></li>
+                            <li><%= link_to "New Clip", new_clip_path %></li>
+                            <li><%= link_to "Recent Clips", list_clips_path %></li>
+                            <li><%= link_to "About", about_clips_path %></li>
                             <% if Clipster.config.associates_clip_with_user %>
                             <li><a href="javascript:void(0);"><%= Clipster.config.user_class %></a></li>
                             <% end %>

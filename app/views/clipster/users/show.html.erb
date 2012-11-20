@@ -1,2 +1,46 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/clipster/users/show.html.erb</p>
+<legend>Recent Clips from <%= @user %></legend>
+<div class="span7">
+    <table class="table table-striped table-bordered table-hover span6">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Language
+                </th>
+                <th>
+                    Created On
+                </th>
+                <th>
+                    Expires
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @clips.each do |clip| %>
+            <tr>
+                <td><%= link_to clip.title, clip %></td>
+                <td><%= clip.language.capitalize %></td>
+                <td><%= l clip.created_at, :format => :short %></td>
+                <td><%= clip.expires_in_words %></td>
+            </tr>
+            <% end %>
+            <% unless @clips.length > 0 %>
+            <tr>
+                <td colspan="3" style="text-align: center;">There are no public clips.</td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+    <%= paginate @clips %>
+</div>
+
+<%# Refactor out into common partial %>
+<aside class="languages bordered span3 offset1">
+    <div class="title">Languages</div>
+    <% get_language_counts.each do |lang| %>
+    <div><%= link_to lang.language.capitalize, list_clips_path(:lang => lang.language) %> (<%= lang.count %>)</div>
+    <% end %>
+</aside>

@@ -1,6 +1,6 @@
 Clipster::Engine.routes.draw do
 
-  resources :users, :except => [:create, :edit, :update, :destroy, :new]
+  resources :users, :only => :show
   #/clipster route
 
   resources :clips, :path => "/" do
