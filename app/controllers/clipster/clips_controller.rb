@@ -18,6 +18,12 @@ module Clipster
       @languages = Clip.public.select("language, count(*) as count").group(:language)
     end
 
+    # TODO: refactor to do proper RESTful controller
+    def new
+      create
+      render 'create'
+    end
+
     def create
       @clip = Clip.new(params[:clip])
 
