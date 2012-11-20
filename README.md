@@ -4,7 +4,13 @@
 
 Code snippets before they were cool.
 
-An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing.
+An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing. Try it out at http://developerdan.com/clipster
+* Features
+	* Syntax highlighting
+	* Expiring clips
+	* Public and private clips
+	* Atom Feed for public clips
+	* Optional user integration
 
 ## Production
 
@@ -23,7 +29,8 @@ Mount the Clipster Engine in your applcations routes.rb like follows.
 
 cd to your apps root and run
 
-    rails g clipster:install && rake db:migrate
+    rails g clipster:install
+    rake db:migrate
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
