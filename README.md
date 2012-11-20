@@ -13,7 +13,7 @@ Add clipster to your Gemfile and then bundle install
     gem 'clipster'
     bundle install
 
-or if you aren't using Bundler, run 
+or if you aren't using Bundler, run
 
     gem install 'clipster'
 
@@ -24,7 +24,8 @@ Mount the Clipster Engine in your applcations routes.rb like follows.
 cd to your apps root and run
 
     rails g clipster:install && rake db:migrate
-    
+
+Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
 ## Development
 
@@ -49,6 +50,7 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 
 ## Enabling User Intgration
 
+
 * Edit the `clipster.rb` initializer to enable user integration with Clipster.
 	* set `config.associates_clip_with_user = true`
 	* set `config.user_class = "YourUserClass"` if your users class is something other than `User`.	NOTE: user_class must be a string.
@@ -57,6 +59,7 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
-=== Todos
+### Todos
 
-Refactor Clips controller to be totally RESTful.
+* Refactor Clips controller to be totally RESTful.
+* Get tests written for all features, preferably with mocks if thats possible.
