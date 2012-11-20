@@ -1,3 +1,9 @@
+? - Release 0.4.0
+   * Added optional user integration.
+   * Added help tooltips on Create page.
+   * Added version number on 'About' page.
+   * Various bug fixes.
+
 2012-11-08 - Release 0.3.0
     * Added expiring clips.
     * Added pagination in 'Recent Clips' list.
