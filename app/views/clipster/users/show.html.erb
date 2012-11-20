@@ -20,7 +20,7 @@
         <tbody>
             <% @clips.each do |clip| %>
             <tr>
-                <td><%= link_to clip.title, clip %></td>
+                <td><%= link_to clip.title, clip_path %></td>
                 <td><%= clip.language.capitalize %></td>
                 <td><%= l clip.created_at, :format => :short %></td>
                 <td><%= clip.expires_in_words %></td>
