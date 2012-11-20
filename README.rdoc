@@ -50,10 +50,10 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 == Enabling User Intgration
 
 * Edit the +clipster.rb+ initializer to enable user integration with Clipster.
-* set `config.associates_clip_with_user = true`
-* set `config.user_class = "YourUserClass"` if your users class is something other than `User`.	NOTE: user_class must be a string.
-* set `config.user_display_attribute = "display field"` if your display field is something other than `email`.
-* NOTE: Clipster's user integration default settings are set up for {Devise}[https://github.com/plataformatec/devise]. Following the standard Devise install and enabling `config.associates_clip_with_user = true` is the minimum necessary to enable user integration.
+* set +config.associates_clip_with_user = true+
+* set +config.user_class = "YourUserClass"+ if your users class is something other than +User+.	NOTE: +user_class+ must be a string.
+* set +config.user_display_attribute = "display field"+ if your display field is something other than +"email"+.
+* NOTE: Clipster's user integration default settings are set up for {Devise}[https://github.com/plataformatec/devise]. Following the standard Devise install and enabling +config.associates_clip_with_user = true+ is the minimum necessary to enable user integration.
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
