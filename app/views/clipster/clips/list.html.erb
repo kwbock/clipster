@@ -28,7 +28,7 @@
                 <td><%= link_to clip.title, clip %></td>
                 <% if Clipster.config.associates_clip_with_user %>
                 <td>
-                    <%= link_to(display_user_text(clip.user), clip.user) unless not clip.user %>
+                    <%= link_to(display_user_text(clip.user), clip.user) if clip.user %>
                 </td>
                 <% end %>
                 <td><%= clip.language.capitalize %></td>
