@@ -49,7 +49,7 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 
 == Enabling User Intgration
 
-* Edit the `clipster.rb` initializer to enable user integration with Clipster.
+* Edit the +clipster.rb+ initializer to enable user integration with Clipster.
 * set `config.associates_clip_with_user = true`
 * set `config.user_class = "YourUserClass"` if your users class is something other than `User`.	NOTE: user_class must be a string.
 * set `config.user_display_attribute = "display field"` if your display field is something other than `email`.
