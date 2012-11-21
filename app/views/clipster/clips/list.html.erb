@@ -11,6 +11,11 @@
                 <th>
                     Title
                 </th>
+                <% if Clipster.config.associates_clip_with_user %>
+                <th>
+                    User
+                </th>
+                <% end %>
                 <th>
                     Language
                 </th>
@@ -26,6 +31,11 @@
             <% @clips.each do |clip| %>
             <tr>
                 <td><%= link_to clip.title, clip %></td>
+                <% if Clipster.config.associates_clip_with_user %>
+                <td>
+                    <%= link_to(display_user_text(clip.user), clip.user) if clip.user %>
+                </td>
+                <% end %>
                 <td><%= clip.language.capitalize %></td>
                 <td><%= l clip.created_at, :format => :short %></td>
                 <td><%= clip.expires_in_words %></td>
@@ -41,9 +51,11 @@
     <div class="clearfix"></div>
     <%= paginate @clips %>
 </div>
+
+<%# Refactor out into common partial %>
 <aside class="languages bordered span3 offset1">
     <div class="title">Languages</div>
-    <% @languages.each do |lang| %>
+    <% get_language_counts.each do |lang| %>
     <div><%= link_to lang.language, list_clips_path(:lang => lang.language) %> (<%= lang.count %>)</div>
     <% end %>
 </aside>

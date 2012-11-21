@@ -24,6 +24,12 @@ module Clipster
       end
     end
 
+    # TODO: refactor to do proper RESTful controller
+    def new
+      create
+      render 'create'
+    end
+
     def create
       @clip = Clip.new(params[:clip])
 

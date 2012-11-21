@@ -1,8 +1,12 @@
 ? - Release 0.4.0
     * Added ATOM feeds for public clips.
-    * Added user integration features
+    * Added optional user integration features
         * includes clipster:install generator that copies an initializer template to parent app
         * gives ability to configure the user model, as well as the user display attribute
+   * Added help tooltips on Create page.
+   * Added version number on 'About' page.
+   * Various bug fixes.
+>>>>>>> f9f71bf0670dd3cae1f6a19d57c4e220f0bb7910
 
 2012-11-08 - Release 0.3.0
     * Added expiring clips.
