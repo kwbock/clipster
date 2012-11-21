@@ -1,4 +1,4 @@
-## ? - Release 0.4.0
+## 2102-11-21 - Release 0.4.0
 * Added ATOM feeds for public clips.
 * Added optional user integration features
     * includes clipster:install generator that copies an initializer template to parent app
