@@ -1,6 +1,8 @@
 Clipster::Engine.routes.draw do
+
+  resources :users, :only => :show
   #/clipster route
-  
+
   resources :clips, :path => "/" do
     collection do
       get 'list', :action => :list

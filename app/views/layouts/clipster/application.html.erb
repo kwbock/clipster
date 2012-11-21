@@ -16,13 +16,16 @@
                     <div class="nav-collapse collapse">
                         <%= link_to "Clipster", root_path, :class => "brand" %>
                         <ul class="nav">
-                            <li><%= link_to "New Clip", :action=>:create %></li>
-                            <li><%= link_to "Recent Clips", :action=>:list %></li>
-                            <li><%= link_to "About", :action=>:about %></li>
+                            <li><%= link_to "New Clip", new_clip_path %></li>
+                            <li><%= link_to "Recent Clips", list_clips_path %></li>
+                            <li><%= link_to "About", about_clips_path %></li>
+                            <% if Clipster.config.associates_clip_with_user %>
+                            <li><a href="javascript:void(0);"><%= Clipster.config.user_class %></a></li>
+                            <% end %>
                         </ul>
                         <!-- <form class="navbar-search pull-right"> -->
                         <%= form_tag(search_clips_path, :method => 'get', :class => 'navbar-search pull-right') do %>
-                             <%= text_field_tag(:search_term, "", :class=>"search-query", :placeholder=>"Search") %> 
+                             <%= text_field_tag(:search_term, "", :class=>"search-query", :placeholder=>"Search") %>
                         <% end %>
 
                     </div>
@@ -37,8 +40,17 @@
             <h3>Clipster</h3>
             <p class="lead">Code snippets before they were cool</p>
         </div>
-    </header> 
+    </header>
     %>
+    <div class="flash">
+        <% if notice %>
+        <p class="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+        <p class="alert"><%= alert %></p>
+        <% end -%>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="span12">

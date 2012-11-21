@@ -3,40 +3,50 @@
 <%= form_for(@clip, :url => { :action => "create" }) do |f| %>
   <%= f.error_messages %>
   
-  <!-- title -->
+  <!-- 1st Row -->
   <div class="span5 offset1">
+    <!-- title -->
     <div class="span4 no-left">
-      <%= f.label(:title) %>
+      <div class="help-tip">
+        <%= f.label(:title) %> <i class="icon-question-sign" data-title="Name your clip"></i></div>
       <%= f.text_field(:title, :value => @clip.title, :required=>"required") %>
     </div>
     <!-- /title -->
     
     <!-- language -->
     <div class="span4 no-left">
-      <%= f.label(:language) %>
+      <div class="help-tip">
+        <%= f.label(:language) %> <i class="icon-question-sign" data-title="Choose a language for syntax highlighting"></i></div>
       <%= f.collection_select("language", @languages, :lang, :title, :selected => (@clip.language || "text")) %>
     </div>
     <!-- /language -->
   </div>
+  <!-- /1st Row -->
+  
+  <!-- 2nd Row -->
   <div class="span5 offset1 pull-right no-left">
     <!-- lifespan -->
     <div class="span4">
-      <%= f.label(:lifespan) %>
-      <%= f.select(:lifespan, @clip.lifespans) %>
+      <div class="help-tip">
+        <%= f.label(:lifespan) %> <i class="icon-question-sign" data-title="Choose how long the clip should remain available"></i></div>
+      <%= f.select(:lifespan, @clip.lifespans, :selected=>(@clip.lifespan || "Forever")) %>
     </div>
     <!-- /lifespan -->
     
     <!-- private -->
     <div class="span4">
-      <%= f.label(:private) %>
+      <div class="help-tip">
+        <%= f.label(:private) %> <i class="icon-question-sign" data-title="Only allow those with a link to access the clip"></i></div>
       <%= f.check_box(:private, :value => @clip.private) %>
     </div>
     <!-- /private -->
   </div>
+  <!-- /2nd Row -->
   
   <!-- clip -->
   <div class="span10 offset1">
-    <%= f.label(:clip) %>
+    <div class="help-tip">
+      <%= f.label(:clip) %> <i class="icon-question-sign" data-title="The main content to be shared"></i></div>
     <%= f.text_area(:clip, :class=>"span10", :rows=>"15", :value => @clip.clip, :required=>"required") %>
   </div>
   <!-- /clip -->

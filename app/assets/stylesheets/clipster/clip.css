@@ -21,6 +21,10 @@
     border-bottom: 1px solid #ddd;
 }
 
+.help-tip label{
+    display: inline;
+}
+
 .image-feed {
     width: 14px;
     height: 14px;
