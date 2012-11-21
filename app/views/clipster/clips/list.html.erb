@@ -1,4 +1,9 @@
-<legend>Recent Clips <%= "- #{params[:lang]}" unless params[:lang].nil? %></legend>
+<%= content_for :head, auto_discovery_link_tag(:atom) %>
+
+<legend>
+        Recent Clips<%= " - #{params[:lang]}" unless params[:lang].nil? %>
+        <%= link_to "", list_clips_path(:lang => params[:lang], :format=>:atom), :class=>"image-feed pull-right" %>
+</legend>
 <div class="span7">
     <table class="table table-striped table-bordered table-hover span6">
         <thead>

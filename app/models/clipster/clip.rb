@@ -60,11 +60,11 @@ module Clipster
         end
       end
     end
-    
+
     def lifespan
       @lifespan
     end
-    
+
     # Getter to convert an expire date to '1 Month', '1 Year', etc.
     def expires_in_words
       unless self.expires.nil?
@@ -77,6 +77,17 @@ module Clipster
     # Utility method called by either cron job or when an expired clip is accessed
     def Clip.delete_expired_clips
       Clip.destroy_all(["expires is not null AND expires <= ?", DateTime.now])
+    end
+
+    # Creates the div for the clip
+    def div
+      cr_scanner = CodeRay.scan(self.clip, self.language)
+      # Only show line numbers if its greater than 1
+      if cr_scanner.loc <= 1
+        return cr_scanner.div
+      else
+        return cr_scanner.div(:line_numbers => :table)
+      end
     end
 
     private
