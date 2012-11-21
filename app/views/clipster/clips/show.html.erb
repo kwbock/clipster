@@ -1,8 +1,8 @@
 <legend>
   <div class="span10"><%=@clip.title %></div>
     <div class="span3 secondary">A <%=@clip.language.capitalize %> clip</div>
-    <div class="span5 secondary">Expires: <%= @clip.lifespan.humanize %></div>
+    <div class="span5 secondary">Expires: <%= @clip.expires_in_words %></div>
     <div class="clearfix"></div>
 </legend>
 <div class="clearfix"></div>
-<%= @clip_div.html_safe  %>
+<%= @clip.div.html_safe  %>
