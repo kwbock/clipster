@@ -4,7 +4,7 @@
 
 Code snippets before they were cool.
 
-An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing. Try it out at http://developerdan.com/clipster
+An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing. Try it out at http://www.developerdan.com/clipster
 * Features
 	* Syntax highlighting
 	* Expiring clips
