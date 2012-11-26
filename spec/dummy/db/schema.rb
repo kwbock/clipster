@@ -11,20 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114175749) do
+ActiveRecord::Schema.define(:version => 20121126185058) do
 
-  create_table "clipster_clips", :force => true do |t|
-    t.string   "url_hash",   :default => "",         :null => false
-    t.text     "clip",       :default => "",         :null => false
-    t.string   "language",                           :null => false
+  create_table "clipster_clips", :id => false, :force => true do |t|
+    t.string   "id",                                 :null => false
+    t.text     "clip",                               :null => false
+    t.string   "language",   :default => "text",     :null => false
     t.string   "title",      :default => "Untitled", :null => false
     t.boolean  "private",    :default => false,      :null => false
+    t.integer  "user_id"
+    t.datetime "expires"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.datetime "expires"
-    t.integer  "user_id"
   end
-
-  add_index "clipster_clips", ["url_hash"], :name => "index_clipster_clips_on_hash", :unique => true
 
 end

@@ -1,8 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: 1
-  url_hash: abc
+  id: abc
   clip: puts :foobar
   language: ruby
   title: Foobar
@@ -13,8 +12,7 @@ one:
   user_id: 1
 
 two:
-  id: 2
-  url_hash: def
+  id: def
   clip: print 'test'
   language: python
   title: Hello
