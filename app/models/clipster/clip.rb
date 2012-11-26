@@ -2,8 +2,6 @@ module Clipster
   class Clip < ActiveRecord::Base
     include ActionView::Helpers::DateHelper
 
-    self.primary_key = :url_hash
-
     before_create :default_values
 
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
@@ -93,7 +91,7 @@ module Clipster
     private
       def default_values
         self.user_id = self.current_user unless not Clipster.config.associates_clip_with_user
-        self.url_hash = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
+        self.id = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
       end
   end
 end
