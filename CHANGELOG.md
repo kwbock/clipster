@@ -1,6 +1,7 @@
 ## 2012-11-26 - Release 0.4.1
 * Made url_hash the model id to fix issue #16
-* Consolidated migrations
+   * Consolidated migrations
+   * Warning, this may break existing databases created before v0.4.1
 * Changed method of finding version number on the 'About' page
 * Fixed rss feed image url
 
