@@ -1,3 +1,10 @@
+## 2012-11-26 - Release 0.4.1
+* Made url_hash the model id to fix issue #16
+   * Consolidated migrations
+   * Warning, this may break existing databases created before v0.4.1
+* Changed method of finding version number on the 'About' page
+* Fixed rss feed image url
+
 ## 2102-11-21 - Release 0.4.0
 * Added ATOM feeds for public clips.
 * Added optional user integration features

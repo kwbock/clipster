@@ -45,7 +45,7 @@ module Clipster
     end
 
     def show
-      @clip = Clip.where("url_hash = :id and (expires is null OR expires > :now)",{
+      @clip = Clip.where("id = :id and (expires is null OR expires > :now)",{
           :id => params[:id],
           :now => DateTime.now
       }).first
