@@ -4,6 +4,8 @@ module Clipster
 
     before_create :default_values
 
+    self.primary_key = :id
+
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
     cattr_reader :lifespans
     cattr_accessor :current_user, :lifespan
