@@ -66,6 +66,10 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
+### Upgrade Notes
+
+* v0.4.1 may break backwards compatibility due to some changes to the Clip model. It may be best to start with a fresh clips table with 0.4.1. 
+
 ### Todos
 
 * Refactor Clips controller to be totally RESTful.
