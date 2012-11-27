@@ -26,7 +26,7 @@ module Clipster
     # TODO: build more powerful search term creation
     scope :search, lambda {|term|
       where("(title LIKE :term or language LIKE :term or clip LIKE :term) and (expires is null OR expires > :now)",{
-          :term => term,
+          :term => "#{term}%".gsub('*','%').gsub(/%+/, '%'),
           :now => DateTime.now
       })
     }
