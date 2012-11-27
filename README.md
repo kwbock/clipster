@@ -4,7 +4,7 @@
 
 Code snippets before they were cool.
 
-An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing. Try it out at http://developerdan.com/clipster
+An OpenSource Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Great for internal code sharing. Try it out at http://www.developerdan.com/clipster
 * Features
 	* Syntax highlighting
 	* Expiring clips
@@ -65,6 +65,10 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 	* NOTE: Clipster's user integration default settings are set up for [Devise](https://github.com/plataformatec/devise). Following the standard Devise install and enabling `config.associates_clip_with_user = true` is the minimum necessary to enable user integration.
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
+
+### Upgrade Notes
+
+* v0.4.1 may break backwards compatibility due to some changes to the Clip model. It may be best to start with a fresh clips table with 0.4.1. 
 
 ### Todos
 

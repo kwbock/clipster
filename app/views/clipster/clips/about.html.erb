@@ -1,4 +1,4 @@
-<legend>About Clipster v.<%=Clipster::VERSION%></legend>
+<legend>About Clipster v<%=Gem.searcher.find("clipster").version unless Gem.searcher.find("clipster").nil?%></legend>
 
 <div class="span10 offset1">
   <p>Clipster is an Open Source Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Complete with syntax highlighting and expiring clips, its great for internal code sharing. Please visit us on <%= link_to("GitHub", "http://github.com/kwbock/clipster") %> for downloads and support.</p>
