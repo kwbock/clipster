@@ -30,3 +30,5 @@
     height: 14px;
     background:url("../clipster/rss_logo_small.png");
 }
+
+.btn-mini { padding: 2px 5px 8px 6px; }

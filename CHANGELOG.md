@@ -1,3 +1,9 @@
+## ? - Release 0.5.0
+* Added a 'raw' view for clips - #24
+* Added 'includes' partial to inject HTML & javascript from host application - #23
+* Added support for wildcard searching using \* - #20
+* Various bug fixes.
+
 ## 2012-11-26 - Release 0.4.1
 * Made url_hash the model id to fix issue #16
    * Consolidated migrations
