@@ -57,6 +57,11 @@ module Clipster
         render :expired
         return
       end
+      
+      respond_to do |format|
+        format.html
+        format.text
+      end
     end
 
     def search
