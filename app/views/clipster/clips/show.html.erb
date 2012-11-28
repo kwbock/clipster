@@ -1,8 +1,13 @@
 <legend>
   <div class="span10"><%=@clip.title %></div>
-    <div class="span3 secondary">A <%=@clip.language.capitalize %> clip</div>
-    <div class="span5 secondary">Expires: <%= @clip.expires_in_words %></div>
-    <div class="clearfix"></div>
+  <div class="span3 secondary">A <%=@clip.language.capitalize %> clip</div>
+  <div class="span5 secondary">Expires: <%= @clip.expires_in_words %></div>
+  <div class="pull-right secondary">
+    <%=link_to({:format=>:text},{:action=>"show", :class=>"btn btn-mini icon-file"}) do %>
+      <i class='icon-file'></i>
+    <%end%>
+  </div>
+  <div class="clearfix"></div>
 </legend>
 <div class="clearfix"></div>
 <%= @clip.div.html_safe  %>
