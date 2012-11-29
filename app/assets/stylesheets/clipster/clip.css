@@ -31,4 +31,8 @@
     background:url("../clipster/rss_logo_small.png");
 }
 
-.btn-mini { padding: 2px 5px 8px 6px; }
+.icon-copy {
+    background-size:14px 14px;
+    background-repeat:no-repeat;
+    background:url("../clipster/custom-clipboard.png");
+}
