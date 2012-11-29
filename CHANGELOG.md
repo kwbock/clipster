@@ -1,5 +1,6 @@
 ## ? - Release 0.5.0
 * Added a 'raw' view for clips - #24
+* Added a 'copy' button for clips
 * Added 'includes' partial to inject HTML & javascript from host application - #23
 * Added support for wildcard searching using \* - #20
 * Various bug fixes.
