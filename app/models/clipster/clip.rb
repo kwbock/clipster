@@ -75,7 +75,7 @@ module Clipster
     end
 
     # Utility method called by either cron job or when an expired clip is accessed
-    def Clip.delete_expired_clips
+    def Clip.delete_expired
       Clip.destroy_all(["expires is not null AND expires <= ?", DateTime.now])
     end
 

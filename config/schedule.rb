@@ -4,7 +4,7 @@
 # http://en.wikipedia.org/wiki/Cron
 
 every :day, :at => '3:00 am' do
-  runner "Clip.delete_expired_clips"
+  runner "Clip.delete_expired"
 end
 
 # Learn more: http://github.com/javan/whenever
