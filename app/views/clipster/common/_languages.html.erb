@@ -1,0 +1,6 @@
+<aside class="languages bordered span3 offset1">
+    <div class="title">Languages</div>
+    <% language_counts.each do |lang| %>
+    <div><%= link_to lang.language, clips_clips_path(:lang => lang.language) %> (<%= lang.count %>)</div>
+    <% end %>
+</aside>
