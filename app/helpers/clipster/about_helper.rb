@@ -1,4 +1,4 @@
 module Clipster
-  module ClipHelper
+  module AboutHelper
   end
 end

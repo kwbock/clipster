@@ -7,16 +7,15 @@ describe Clipster::ClipsController do
 
   before(:each) { @routes = Clipster::Engine.routes }
 
-  # Testing the index view.
-  # Change this view if we create an index template
-  it "should render index template on index call" do
-    get :index
+  # Testing the new view.
+  it "renders new template on new call" do
+    get :new
 
-    response.should render_template(:create)
+    response.should render_template(:new)
   end
 
   # Testing the show/:id view
-  it "should render show template on show call" do
+  it "renders show template on show call" do
     get :show, :id => :abc
 
     # test that the correct template was rendered
@@ -29,16 +28,16 @@ describe Clipster::ClipsController do
   end
 
   # Testing list/ view
-  it "should render list template on list call" do
-    get :list
+  it "renders list template on clips call" do
+    get :clips
 
-    response.should render_template(:list)
+    response.should render_template(:clips)
   end
 
   # Testing list/:lang view
-  it "should render list template on list call for ruby" do
-    get :list, :lang => :ruby
+  it "renders list template on clips call for ruby" do
+    get :clips, :lang => :ruby
 
-    response.should render_template(:list)
+    response.should render_template(:clips)
   end
 end

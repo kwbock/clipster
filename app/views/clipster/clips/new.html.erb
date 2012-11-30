@@ -17,7 +17,7 @@
     <div class="span4 no-left">
       <div class="help-tip">
         <%= f.label(:language) %> <i class="icon-question-sign" data-title="Choose a language for syntax highlighting"></i></div>
-      <%= f.collection_select("language", @languages, :lang, :title, :selected => (@clip.language || "text")) %>
+      <%= f.collection_select("language", supported_languages, :lang, :title, :selected => (@clip.language || "text")) %>
     </div>
     <!-- /language -->
   </div>

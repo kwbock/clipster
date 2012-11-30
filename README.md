@@ -72,5 +72,4 @@ Restart your application and you should be able to access the engine at http://d
 
 ### Todos
 
-* Refactor Clips controller to be totally RESTful.
 * Get tests written for all features, preferably with mocks if thats possible.

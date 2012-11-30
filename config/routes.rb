@@ -1,16 +1,14 @@
 Clipster::Engine.routes.draw do
 
   resources :users, :only => :show
-  #/clipster route
+  resources :about, :only => :index
 
-  resources :clips, :path => "/" do
+  resources :clips, :path => "/", :only=> [:create, :new, :show] do
     collection do
-      get 'list', :action => :list
-      get 'list(/:lang)(.:format)', :action => :list
-      get 'search', :action => :search
-      get 'about', :action => :about
+      get 'search'
+      get 'clips'
     end
   end
 
-  root :to => :clips
+  root :to => "clips#new"
 end
