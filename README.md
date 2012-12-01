@@ -1,6 +1,7 @@
 # Clipster
 
 [<img src="https://secure.travis-ci.org/kwbock/clipster.png" alt="Build Status" />](http://travis-ci.org/kwbock/clipster)
+[![Dependency Status](https://gemnasium.com/kwbock/clipster.png)](https://gemnasium.com/kwbock/clipster)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/kwbock/clipster)
 
 Code snippets before they were cool.
