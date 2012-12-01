@@ -18,7 +18,10 @@
         ZeroClipboard.setMoviePath("<%= asset_path('ZeroClipboard10.swf') %>");
         var clip = new ZeroClipboard.Client();
         clip.setText("<%= escape_javascript(@clip.clip.html_safe) %>");
-        //link to button
+        clip.addEventListener( 'onComplete', function(){ 
+            alertify.log("Clip successfully copied");
+        });
+        //attach to button
         clip.glue( 'copy-button', 'button-container' );
     });
 </script>
