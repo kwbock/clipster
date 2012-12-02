@@ -1,15 +1,47 @@
 <legend>About Clipster v<%=Gem.searcher.find("clipster").version unless Gem.searcher.find("clipster").nil?%></legend>
 
-<div class="span10 offset1">
-  <p>Clipster is an Open Source Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Complete with syntax highlighting and expiring clips, its great for internal code sharing. Please visit us on <%= link_to("GitHub", "http://github.com/kwbock/clipster") %> for downloads and support.</p>
+
+<div class="span9">
+  <div class="span9">
+    <p>Clipster is an Open Source Rails engine to add clipboard code sharing to your existing Ruby on Rails applications. Complete with syntax highlighting and expiring clips, its great for internal code sharing. Please visit us on <%= link_to("GitHub", "http://github.com/kwbock/clipster") %> for downloads and support.</p>
+  </div>
+
+  <div class="well span9">
+    <p>Copyright 2012 Kyle Bock, Daniel White</p>
+
+    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+    <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<p>
+
+    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+  </div>
 </div>
 
-<div class="well span9 offset1">
-  <p>Copyright 2012 Kyle Bock, Daniel White</p>
-
-  <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-
-  <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<p>
-
-  <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<div class="developers span2 pull-right">
+  <h5>Source Code</h5>
+    <p>
+      <a href="https://github.com/kwbock/clipster">
+        GitHub<br \>
+        <%= image_tag("Clipster/git_hub.png",
+                      :alt=>"GitHub",
+                      :class=>"img-polaroid",
+                      :width=>80,
+                      :height=>80) %></a></p>
+  <h5>Developers</h5>
+    <p>
+      <a href="https://github.com/kwbock">
+        Kyle Bock<br \>
+        <%= image_tag("https://secure.gravatar.com/avatar/9ed5367a28f94871e15a428712d595b0",
+                      :alt=>"Kyle Bock",
+                      :class=>"img-polaroid",
+                      :width=>80,
+                      :height=>80) %></a></p>
+    <p>
+      <a href="https://github.com/lightswitch05">
+        Daniel White<br \>
+        <%=image_tag("https://secure.gravatar.com/avatar/6e12977acc1600c0f367d6d7b9265f95",
+                     :alt=>"Daniel White",
+                     :class=>"img-polaroid",
+                     :width=>80,
+                     :height=>80)%></a></p>
 </div>
