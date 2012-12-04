@@ -26,6 +26,7 @@ end
 
 group :test do
   gem "capybara"
+  gem "timecop"
 end
 
 # Declare any dependencies that are still in development here instead of in
