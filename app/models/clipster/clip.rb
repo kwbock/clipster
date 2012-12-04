@@ -18,8 +18,8 @@ module Clipster
     # Define all supported lifespans and their time offset
     @@lifespans = [["Forever", nil],
                    ["An Hour", :hours=>1],
-                   ["A Week", :days=>7],
                    ["A Day", :days=>1],
+                   ["A Week", :days=>7],
                    ["A Month", :months=>1],
                    ["A Year", :years=>1]]
 
