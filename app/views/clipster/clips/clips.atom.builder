@@ -9,7 +9,7 @@ atom_feed do |feed|
       else
         entry.title("#{clip.title}. A #{clip.language} clip that expires on #{clip.expires}.")
       end
-      entry.content(clip.div.html_safe, :type => 'html')
+      entry.content('<div class="clip">' + clip.div.html_safe + '</div>', :type => 'html')
       
       #TODO set author once user integration is compleate
       #entry.author do |author|

@@ -50,3 +50,13 @@
        -o-transition: background-position 0.1s linear;
           transition: background-position 0.1s linear;
 }
+
+.clip {
+    overflow: auto;
+}
+
+.clip pre{
+    white-space: pre;
+    word-wrap: normal;
+    word-break: normal;
+}

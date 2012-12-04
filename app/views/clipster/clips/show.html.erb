@@ -11,7 +11,8 @@
   <div class="clearfix"></div>
 </legend>
 <div class="clearfix"></div>
-<%= @clip.div.html_safe  %>
+
+<%= render "clipster/common/clip", :object => @clip %>
 
 <script type="text/javascript">
     $(document).ready(function () {
