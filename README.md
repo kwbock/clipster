@@ -68,6 +68,10 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
+### Contributing
+
+Please see the [contribution guidelines](https://github.com/kwbock/clipster/blob/master/CONTRIBUTION_GUIDELINES.md).
+
 ### Upgrade Notes
 
 * v0.4.1 may break backwards compatibility due to some changes to the Clip model. It may be best to start with a fresh clips table with 0.4.1. 
@@ -76,7 +80,9 @@ Restart your application and you should be able to access the engine at http://d
 * [Alertify](https://github.com/fabien-d/alertify.js/)
 * [Bootstrap](http://twitter.github.com/bootstrap/)
 * [CodeRay](http://coderay.rubychan.de/)
+* [Database Cleaner](https://github.com/bmabey/database_cleaner)
 * [DynamicForm](https://github.com/joelmoss/dynamic_form)
+* [Factory Girl](https://github.com/thoughtbot/factory_girl)
 * [jQuery for Rails](https://github.com/indirect/jquery-rails)
 * [Kaminari](https://github.com/amatsuda/kaminari)
 * [RSpec for Rails](https://github.com/rspec/rspec-rails)
@@ -84,7 +90,3 @@ Restart your application and you should be able to access the engine at http://d
 * [Sqlite](https://www.sqlite.org/)
 * [Whenever](https://github.com/javan/whenever)
 * [Zero Clipboard](https://github.com/jonrohan/ZeroClipboard)
-
-### Todos
-
-* Get tests written for all features, preferably with mocks if thats possible.
