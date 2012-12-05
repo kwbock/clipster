@@ -27,6 +27,8 @@ end
 group :test do
   gem "capybara"
   gem "timecop"
+  gem "database_cleaner"
+  gem "factory_girl_rails"
 end
 
 # Declare any dependencies that are still in development here instead of in

@@ -95,4 +95,21 @@ describe "expiring clips" do
     page.should have_content('Sorry, This is an invalid clip or it has expired.')
   end
 
+  it "creates a clip that never expires" do
+    #create the Clip
+    visit new_clip_path
+    within("#new_clip") do
+      fill_in 'clip_clip', :with => 'short example clip'
+    end
+    click_button 'Create Clip'
+
+    # Verify clip creation
+    page.should have_content('Expires: The end of time')
+    page.should have_content('short example clip')
+
+    # Move 100 years ahead
+    Timecop.travel(364*24*60*60*100)
+    visit(current_path)
+    page.should have_content('Expires: The end of time')
+  end
 end
