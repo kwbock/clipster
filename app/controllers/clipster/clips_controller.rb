@@ -49,7 +49,7 @@ module Clipster
         render :expired
         return
       end
-      
+
       respond_to do |format|
         format.html
         format.text
@@ -59,6 +59,11 @@ module Clipster
     def search
       @clips = Clip.search(params[:search_term]).page(params[:page])
       render :clips
+    end
+
+    def preview
+      @clip = Clip.new(params[:clip])
+      render :partial => 'clipster/common/clip', :object => @clip
     end
   end
 end
