@@ -39,10 +39,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  
+
   # Include engine routes
   config.include Clipster::Engine.routes.url_helpers
-  
+
   config.before(:suite) do
     DatabaseCleaner.clean_with :transaction
   end

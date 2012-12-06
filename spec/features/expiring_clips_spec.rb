@@ -64,7 +64,7 @@ describe "expiring clips" do
     # Verify clip creation
     page.should have_content('Expires: 7 days')
     page.should have_content('short example clip')
-    
+
     # Move past expire
     Timecop.travel(7*24*60*60 + 1)
     visit(current_path)

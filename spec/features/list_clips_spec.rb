@@ -8,14 +8,14 @@ describe "list clips" do
     FactoryGirl.create(:clip, :title=>"Java Clip", :language=>"java")
     FactoryGirl.create(:clip, :title=>"HTML Clip", :language=>"html")
     FactoryGirl.create(:clip, :title=>"Public PHP Clip", :language=>"php")
-    
+
     # Private Clips
     FactoryGirl.create(:clip, :private, :title=>"Private PHP Clip", :language=>"php")
-    
+
     # Expired
     FactoryGirl.create(:clip, :expired, :title=>"Expired Ruby Clip", :language=>"ruby")
   end
-  
+
   it "validates private clips are not in the public list" do
     visit clips_clips_path
     page.should have_content("Ruby Clip 1 Ruby")
@@ -34,7 +34,7 @@ describe "list clips" do
     page.should_not have_content("Java Clip Java")
     page.should_not have_content("Public PHP Clip Php")
   end
-  
+
   it "validates language counts" do
     visit clips_clips_path
     page.should have_content("ruby (2)")
