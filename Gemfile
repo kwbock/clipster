@@ -27,7 +27,7 @@ end
 group :test do
   gem "capybara"
   gem "timecop"
-  gem "database_cleaner"
+  gem "database_cleaner", :git => "https://github.com/lightswitch05/database_cleaner.git"
   gem "factory_girl_rails"
 end
 
