@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'timecop'
 require 'factory_girl_rails'
+require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -41,4 +42,24 @@ RSpec.configure do |config|
   
   # Include engine routes
   config.include Clipster::Engine.routes.url_helpers
+  
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation, {:except => %w["sqlite_sequence"]}
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
