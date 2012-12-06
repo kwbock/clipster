@@ -43,4 +43,43 @@ describe "list clips" do
     page.should have_content("html (1)")
     page.should have_content("ruby (2)")
   end
+
+  it "does not have pagination for less than 26 public clips" do
+    # Should already have 6 public clips, create 19 more
+    FactoryGirl.create_list(:clip, 19)
+
+    visit clips_clips_path
+    page.should_not have_link("Next")
+    page.should_not have_link("Last")
+  end
+
+  it "has pagination for 26 or more public clips" do
+    # Should already have 6 public clips, create 20 more
+    FactoryGirl.create_list(:clip, 20)
+
+    visit clips_clips_path
+    page.should have_link("2")
+    page.should have_link("Next")
+    page.should have_link("Last")
+  end
+
+  it "uses pagination" do
+    FactoryGirl.create_list(:clip, 30)
+
+    visit clips_clips_path
+    click_link "Next"
+    page.should have_link("Prev")
+    page.should have_content("Title Language")
+    page.should have_content("Untitled Text")
+  end
+
+  it "uses pagination with a language filter" do
+    FactoryGirl.create_list(:clip, 60)
+
+    visit clips_clips_path(:lang => "text")
+    click_link "Next"
+    page.should have_link("Prev")
+    page.should_not have_content("Ruby")
+    current_url.should have_content("lang=text")
+  end
 end

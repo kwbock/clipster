@@ -44,7 +44,7 @@ RSpec.configure do |config|
   config.include Clipster::Engine.routes.url_helpers
   
   config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation, {:except => %w["sqlite_sequence"]}
+    DatabaseCleaner.clean_with :transaction
   end
 
   config.before(:each) do
@@ -52,7 +52,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each) do
