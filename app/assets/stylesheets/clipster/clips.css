@@ -60,3 +60,26 @@
     word-wrap: normal;
     word-break: normal;
 }
+
+.navbar-search .search-query {
+    border-radius: 15px 0 0 15px;
+    padding: 4px 14px;
+    border-right-style: none;
+}
+
+.input-append .add-on:last-child {
+    border-radius: 0 15px 15px 0;
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    border-left-style: none;
+}
+
+.navbar-inverse .input-append .add-on:last-child 
+{
+    -moz-transition: none 0s ease 0s;
+    background-color: #515151;
+    border-color: #111111;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.15);
+}
