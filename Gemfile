@@ -21,7 +21,14 @@ gem "whenever"
 gem "kaminari"
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem "rspec-rails"
+end
+
+group :test do
+  gem "capybara"
+  gem "timecop"
+  gem "database_cleaner", :git => "https://github.com/lightswitch05/database_cleaner.git"
+  gem "factory_girl_rails"
 end
 
 # Declare any dependencies that are still in development here instead of in

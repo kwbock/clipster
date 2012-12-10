@@ -1,8 +1,28 @@
 <legend>
   <div class="span10"><%=@clip.title %></div>
-    <div class="span3 secondary">A <%=@clip.language.capitalize %> clip</div>
-    <div class="span5 secondary">Expires: <%= @clip.expires_in_words %></div>
-    <div class="clearfix"></div>
+  <div class="span3 secondary">A <%=@clip.language.capitalize %> clip</div>
+  <div class="span5 secondary">Expires: <%= @clip.expires_in_words %></div>
+  <div id="button-container" class="pull-right secondary btn-group" style="position:relative">
+    <%=link_to({:format=>:text},{:action=>"show", :class=>"btn btn-mini"}) do %>
+      <i class='icon-file'></i>
+    <%end%>
+    <button id="copy-button" class="btn btn-mini"> <i class='icon-copy'></i></button>
+  </div>
+  <div class="clearfix"></div>
 </legend>
 <div class="clearfix"></div>
-<%= @clip.div.html_safe  %>
+
+<%= render "clipster/common/clip", :object => @clip %>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ZeroClipboard.setMoviePath("<%= asset_path('ZeroClipboard10.swf') %>");
+        var clip = new ZeroClipboard.Client();
+        clip.setText("<%= escape_javascript(@clip.clip.html_safe) %>");
+        clip.addEventListener( 'onComplete', function(){ 
+            alertify.log("Clip successfully copied");
+        });
+        //attach to button
+        clip.glue( 'copy-button', 'button-container' );
+    });
+</script>

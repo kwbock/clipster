@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function () {
+    $(".icon-search").click(function() {
+        document.search_form.submit();
+    });
+});

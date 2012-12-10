@@ -14,6 +14,9 @@ module Clipster
         rake("clipster:install:migrations")
       end
 
+      def copy_partials
+        template "_includes.html.erb", "app/views/clipster/common/_includes.html.erb"
+      end
     end
   end
 end

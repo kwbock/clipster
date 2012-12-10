@@ -5,3 +5,4 @@ $(document).ready(function () {
     //enable all tool-tips
     $(".icon-question-sign").tooltip();
 });
+

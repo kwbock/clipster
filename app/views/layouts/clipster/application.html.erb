@@ -7,6 +7,7 @@
   <%= javascript_include_tag "clipster/application" %>
   <%= csrf_meta_tags %>
   <%=h yield(:head) %>
+  <%= render "clipster/common/includes" %>
 </head>
 <body>
     <div class="container">
@@ -17,17 +18,20 @@
                         <%= link_to "Clipster", root_path, :class => "brand" %>
                         <ul class="nav">
                             <li><%= link_to "New Clip", new_clip_path %></li>
-                            <li><%= link_to "Recent Clips", list_clips_path %></li>
-                            <li><%= link_to "About", about_clips_path %></li>
+                            <li><%= link_to "Recent Clips", clips_clips_path %></li>
+                            <li><%= link_to "About", "about" %></li>
                             <% if Clipster.config.associates_clip_with_user %>
                             <li><a href="javascript:void(0);"><%= Clipster.config.user_class %></a></li>
                             <% end %>
                         </ul>
-                        <!-- <form class="navbar-search pull-right"> -->
-                        <%= form_tag(search_clips_path, :method => 'get', :class => 'navbar-search pull-right') do %>
-                             <%= text_field_tag(:search_term, "", :class=>"search-query", :placeholder=>"Search") %>
+                        <%= form_tag(search_clips_path, :method => 'get', :class => 'navbar-search pull-right', :name=>"search_form") do %>
+                            <div class="input-append">
+                                <%= text_field_tag(:search_term, "", :class=>"search-query", :type=>"search", :placeholder=>"Search") %>
+                                <span class="add-on">
+                                <i class="icon-search"> </i></span>
+                            </div>
+                            <input id="search_button" type="submit" style="display:none;" />
                         <% end %>
-
                     </div>
                 </div>
             </div>

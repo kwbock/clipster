@@ -1,9 +1,18 @@
+## 2012-12-09 - Release 0.5.0
+* Added a 'raw' view for clips - #24.
+* Added a 'copy' button for clips.
+* Added 'includes' partial to inject HTML & javascript from host application - #23.
+* Added support for wildcard searching using \* - #20.
+* Added 'preview' tab.
+* Added many more tests - #14.
+* Various bug fixes.
+
 ## 2012-11-26 - Release 0.4.1
-* Made url_hash the model id to fix issue #16
-   * Consolidated migrations
-   * Warning, this may break existing databases created before v0.4.1
-* Changed method of finding version number on the 'About' page
-* Fixed rss feed image url
+* Made url_hash the model id to fix issue #16.
+   * Consolidated migrations.
+   * Warning, this may break existing databases created before v0.4.1.
+* Changed method of finding version number on the 'About' page.
+* Fixed rss feed image url.
 
 ## 2102-11-21 - Release 0.4.0
 * Added ATOM feeds for public clips.

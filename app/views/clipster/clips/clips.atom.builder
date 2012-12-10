@@ -4,14 +4,12 @@ atom_feed do |feed|
 
   @clips.each do |clip|
     feed.entry(clip) do |entry|
-      entry.title(clip.title)
       if clip.expires.nil?
-        entry.subtitle("A #{clip.language} clip that never expires")
+        entry.title("#{clip.title}. A #{clip.language} clip that never expires.")
       else
-        entry.subtitle("A #{clip.language} clip that expires on #{clip.expires}")
+        entry.title("#{clip.title}. A #{clip.language} clip that expires on #{clip.expires}.")
       end
-      entry.updated(clip.updated_at)
-      entry.content(clip.div.html_safe, :type => 'html')
+      entry.content('<div class="clip">' + clip.div.html_safe + '</div>', :type => 'html')
       
       #TODO set author once user integration is compleate
       #entry.author do |author|

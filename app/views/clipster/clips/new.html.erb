@@ -1,8 +1,22 @@
+<script type="text/javascript">
+  $(function() {
+    $("#tabs a").click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+
+    $('#tabs a#preview_label').bind('click', function(e) {
+      $.post("<%= preview_clips_path %>", $("#new_clip").serialize(), function(data, textStatus, jqXHR) {
+        $("#preview").html(data);
+      })
+    });
+  });
+</script>
 <legend>New Clip</legend>
 
 <%= form_for(@clip, :url => { :action => "create" }) do |f| %>
   <%= f.error_messages %>
-  
+
   <!-- 1st Row -->
   <div class="span5 offset1">
     <!-- title -->
@@ -12,17 +26,17 @@
       <%= f.text_field(:title, :value => @clip.title, :required=>"required") %>
     </div>
     <!-- /title -->
-    
+
     <!-- language -->
     <div class="span4 no-left">
       <div class="help-tip">
         <%= f.label(:language) %> <i class="icon-question-sign" data-title="Choose a language for syntax highlighting"></i></div>
-      <%= f.collection_select("language", @languages, :lang, :title, :selected => (@clip.language || "text")) %>
+      <%= f.collection_select("language", supported_languages, :lang, :title, :selected => (@clip.language || "text")) %>
     </div>
     <!-- /language -->
   </div>
   <!-- /1st Row -->
-  
+
   <!-- 2nd Row -->
   <div class="span5 offset1 pull-right no-left">
     <!-- lifespan -->
@@ -32,7 +46,7 @@
       <%= f.select(:lifespan, @clip.lifespans, :selected=>(@clip.lifespan || "Forever")) %>
     </div>
     <!-- /lifespan -->
-    
+
     <!-- private -->
     <div class="span4">
       <div class="help-tip">
@@ -42,15 +56,27 @@
     <!-- /private -->
   </div>
   <!-- /2nd Row -->
-  
+  <div class="span10 offset1 ">
+    <ul id="tabs" class="nav nav-tabs">
+      <li class="active"><a href="#code" data-toggle="tab">Code</a></li>
+      <li><a href="#preview" id="preview_label" data-toggle="tab">Preview</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="code" class="tab-pane active">
+        <div class="help-tip">
+          <%= f.label(:clip) %> <i class="icon-question-sign" data-title="The main content to be shared"></i>
+        </div>
+        <%= f.text_area(:clip, :class=>"span10", :rows=>"15", :value => @clip.clip, :required=>"required") %>
+      </div>
+      <div id="preview" class="tab-pane"></div><!-- ajax loaded preview content -->
+    </div>
+  </div>
   <!-- clip -->
-  <div class="span10 offset1">
-    <div class="help-tip">
-      <%= f.label(:clip) %> <i class="icon-question-sign" data-title="The main content to be shared"></i></div>
-    <%= f.text_area(:clip, :class=>"span10", :rows=>"15", :value => @clip.clip, :required=>"required") %>
+  <div class="tab-content">
+
   </div>
   <!-- /clip -->
-  
+
   <div class="span2 pull-right">
     <%= f.submit(:class=>"btn btn-primary") %>
   </div>
