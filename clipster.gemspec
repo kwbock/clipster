@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/kwbock/clipster"
   s.summary     = "Provides sharable clipboard functionality via an engine to an existing rails app."
   s.description = "Code clips before they were cool. See README for deployment information"
+  s.license = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
