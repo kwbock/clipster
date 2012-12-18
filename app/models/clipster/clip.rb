@@ -10,10 +10,7 @@ module Clipster
     cattr_reader :lifespans
     cattr_accessor :current_user, :lifespan
 
-    belongs_to :user, :class_name => Clipster.config.user_class.to_s unless not Clipster.config.associates_clip_with_user
-
-    validates :clip, :length => {:minimum   => 3}
-    validates :title, :length => {:minimum   => 1}
+    belongs_to :user, :class_name => Clipster.config.user_class.to_s if Clipster.config.associates_clip_with_user
 
     # Define all supported lifespans and their time offset
     @@lifespans = [["Forever", nil],
@@ -22,6 +19,15 @@ module Clipster
                    ["A Week", :days=>7],
                    ["A Month", :months=>1],
                    ["A Year", :years=>1]]
+
+    validates :clip, :length => {:minimum   => 3}
+    validates :title, :length => {:minimum   => 1}
+    validates :language, :inclusion => { :in => CodeRay::Scanners.list.map(&:to_s),
+          :message => "%{value} is not supported, please choose from: " +
+          CodeRay::Scanners.list.map(&:to_s).to_s }
+    validates :lifespan, :inclusion => { :in => @@lifespans.flatten,
+          :message => "%{value} is not supported, please choose from:" +
+          lifespans.map(&:first).to_s}
 
     # TODO: build more powerful search term creation
     scope :search, lambda {|term|
@@ -56,7 +62,7 @@ module Clipster
       @lifespan = lifespan
       @@lifespans.each_with_index do |span, index|
         if span[0] == lifespan
-          self.expires = DateTime.now.advance(@@lifespans[index][1])
+          self.expires = DateTime.now.advance(@@lifespans[index][1]) unless span=="Forever"
         end
       end
     end
@@ -90,9 +96,9 @@ module Clipster
       end
     end
 
-    private
+    protected
       def default_values
-        self.user_id = self.current_user unless not Clipster.config.associates_clip_with_user
+        self.user_id = self.current_user if Clipster.config.associates_clip_with_user
         self.id = Time.now.to_f.to_s.gsub('.','').to_i.to_s(36)
       end
   end

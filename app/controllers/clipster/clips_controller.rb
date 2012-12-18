@@ -3,6 +3,9 @@ require_dependency "clipster/application_controller"
 module Clipster
   class ClipsController < ApplicationController
 
+    # GET /clips
+    # GET /clips.json
+    # GET /clips.xml
     def clips
       # get all clips, with the newest clip first
       if params[:lang].nil?
@@ -16,24 +19,39 @@ module Clipster
       respond_to do |format|
         format.html
         format.atom
+        format.json { render json: @clips }
+        format.xml { render xml: @clips }
       end
     end
 
+    # GET /new
+    # GET /new.json
+    # GET /new.xml
     def new
-      @clip = Clip.new()
+      @clip = Clip.new
+      
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @clip }
+        format.xml { render xml: @clip }
+      end
     end
 
+    # POST /
     def create
       @clip = Clip.new(params[:clip])
-
-      #only do validation if something was actually posted.
-      if @clip.valid?
-        @clip.save
-        redirect_to @clip
-        return #early return so we don't have else statement
+      
+      respond_to do |format|
+        if @clip.valid? && @clip.save
+          format.html { redirect_to @clip }
+          format.json { render json: @clip, status: :created, location: @post }
+          format.xml { render xml: @clip, status: :created, location: @post }
+        else# didn't pass validation
+          format.html { render :new }
+          format.json { render json: @clip.errors, status: :unprocessable_entity }
+          format.xml { render xml: @clip.errors, status: :unprocessable_entity }
+        end
       end
-
-      render :new # didn't pass validation
     end
 
     def show
