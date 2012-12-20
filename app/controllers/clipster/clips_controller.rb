@@ -64,13 +64,22 @@ module Clipster
         # Most likely the clip is expired, take advantage of this time to
         # clean up all expired clips, then display error page
         Clip.delete_expired
-        render :expired
+        respond_to do |format|
+          @clip = Clip.new
+          @clip.errors.add("Clip id", "is either invalid or it has expired.")
+          format.html { render :expired, status: :not_found }
+          format.text { render text: @clip.errors, status: :not_found }
+          format.json { render json: @clip.errors, status: :not_found }
+          format.xml { render xml: @clip.errors, status: :not_found }
+        end
         return
       end
 
       respond_to do |format|
         format.html
-        format.text
+        format.text { render text: @clip.clip.html_safe }
+        format.json { render json: @clip }
+        format.xml { render xml: @clip }
       end
     end
 
