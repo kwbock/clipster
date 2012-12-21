@@ -29,16 +29,15 @@ module Clipster
           :message => "%{value} is not supported, please choose from:" +
           lifespans.map(&:first).to_s}
 
-    # TODO: build more powerful search term creation
-    scope :search, lambda {|term|
+    def search(term)
       where("(title LIKE :term or language LIKE :term or clip LIKE :term) and (expires is null OR expires > :now)",{
           :term => "#{term}%".gsub('*','%').gsub(/%+/, '%'),
           :now => DateTime.now
       })
-    }
+    end
 
     # All clips that are public, language specific, and not expired
-    scope :language_for_public, lambda {|lang|
+    def language_for_public(lang)
       where("private = :private AND
              language = :lang AND
              (expires is null OR expires > :now)",{
@@ -46,16 +45,16 @@ module Clipster
           :lang => lang,
           :now  => DateTime.now
       })
-    }
+    end
 
     # All clips that are public, and not expired
-    scope :public, lambda {
+    def public
       where("private = :private AND
              (expires is null OR expires > :now)",{
           :private => false,
           :now  => DateTime.now
       })
-    }
+    end
 
     # Setter to convert user's choice of 'A Week', etc. to an actual DateTime
     def lifespan=(lifespan)

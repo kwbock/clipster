@@ -39,10 +39,15 @@ module Clipster
 
     # POST /
     def create
-      @clip = Clip.new(params[:clip])
+      @clip = Clip.new
+      begin
+        @clip = Clip.new(params[:clip])
+      rescue ActiveModel::MassAssignmentSecurity::Error => error
+        @clip.errors.add("Security -",error.message)
+      end
       
       respond_to do |format|
-        if @clip.valid? && @clip.save
+        if @clip.errors.empty? && @clip.valid? && @clip.save
           format.html { redirect_to @clip }
           format.json { render json: @clip, status: :created, location: @post }
           format.xml { render xml: @clip, status: :created, location: @post }
