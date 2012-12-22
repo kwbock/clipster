@@ -37,7 +37,9 @@ module Clipster
       end
     end
 
-    # POST /
+    # POST /create
+    # POST /create.json
+    # POST /create.xml
     def create
       @clip = Clip.new
       begin
@@ -59,6 +61,9 @@ module Clipster
       end
     end
 
+    # POST /[id]
+    # POST /[id].json
+    # POST /[id].xml
     def show
       @clip = Clip.where("id = :id and (expires is null OR expires > :now)",{
           :id => params[:id],

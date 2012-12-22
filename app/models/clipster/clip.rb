@@ -29,7 +29,8 @@ module Clipster
           :message => "%{value} is not supported, please choose from:" +
           lifespans.map(&:first).to_s}
 
-    def search(term)
+    # Search all public clips using title, language, and content
+    def self.search(term)
       where("(title LIKE :term or language LIKE :term or clip LIKE :term) and (expires is null OR expires > :now)",{
           :term => "#{term}%".gsub('*','%').gsub(/%+/, '%'),
           :now => DateTime.now
@@ -37,7 +38,7 @@ module Clipster
     end
 
     # All clips that are public, language specific, and not expired
-    def language_for_public(lang)
+    def self.language_for_public(lang)
       where("private = :private AND
              language = :lang AND
              (expires is null OR expires > :now)",{
@@ -48,7 +49,7 @@ module Clipster
     end
 
     # All clips that are public, and not expired
-    def public
+    def self.public
       where("private = :private AND
              (expires is null OR expires > :now)",{
           :private => false,
@@ -60,8 +61,8 @@ module Clipster
     def lifespan=(lifespan)
       @lifespan = lifespan
       @@lifespans.each_with_index do |span, index|
-        if span[0] == lifespan
-          self.expires = DateTime.now.advance(@@lifespans[index][1]) unless span=="Forever"
+        if span[0] == lifespan && lifespan != "Forever"
+          self.expires = DateTime.now.advance(@@lifespans[index][1])
         end
       end
     end

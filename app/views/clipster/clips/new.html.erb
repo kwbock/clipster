@@ -43,7 +43,7 @@
     <div class="span4">
       <div class="help-tip">
         <%= f.label(:lifespan) %> <i class="icon-question-sign" data-title="Choose how long the clip should remain available"></i></div>
-      <%= f.select(:lifespan, @clip.lifespans, :selected=>(@clip.lifespan || "Forever")) %>
+      <%= f.collection_select(:lifespan, @clip.lifespans, :first, :first, :selected=>(@clip.lifespan || "Forever")) %>
     </div>
     <!-- /lifespan -->
 
