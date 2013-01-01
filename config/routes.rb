@@ -7,7 +7,7 @@ Clipster::Engine.routes.draw do
     collection do
       get 'search'
       get 'clips'
-      post 'create', :path=> "create"
+      post 'create', :path=> "create", :as=> "create"
     end
     post 'preview', on: :new
   end

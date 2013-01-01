@@ -93,9 +93,16 @@ module Clipster
       end
     end
 
+    # GET /search?search_term=[term]
+    # GET /search.json?search_term=[term]
+    # GET /search.xml?search_term=[term]
     def search
       @clips = Clip.search(params[:search_term]).page(params[:page])
-      render :clips
+      respond_to do |format|
+        format.html { render :clips }
+        format.json { render json: @clips }
+        format.xml { render xml: @clips }
+      end
     end
 
     def preview
