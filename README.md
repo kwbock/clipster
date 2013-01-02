@@ -68,6 +68,10 @@ Launch your server and navigate to https://localhost:3000/clipster to confirm th
 
 Restart your application and you should be able to access the engine at http://domain.tld/clipster
 
+## API
+
+Clipster has both XML and JSON API support. Using the API you can create, view, search, and browse clips. Visit the [wiki page](https://github.com/kwbock/clipster/wiki/API) for examples.
+
 ### Contributing
 
 Please see the [contribution guidelines](https://github.com/kwbock/clipster/blob/master/CONTRIBUTION_GUIDELINES.md).
