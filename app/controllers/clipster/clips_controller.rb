@@ -3,6 +3,9 @@ require_dependency "clipster/application_controller"
 module Clipster
   class ClipsController < ApplicationController
 
+    # GET /clips
+    # GET /clips.json
+    # GET /clips.xml
     def clips
       # get all clips, with the newest clip first
       if params[:lang].nil?
@@ -16,26 +19,51 @@ module Clipster
       respond_to do |format|
         format.html
         format.atom
+        format.json { render json: @clips }
+        format.xml { render xml: @clips }
       end
     end
 
+    # GET /new
+    # GET /new.json
+    # GET /new.xml
     def new
-      @clip = Clip.new()
-    end
-
-    def create
-      @clip = Clip.new(params[:clip])
-
-      #only do validation if something was actually posted.
-      if @clip.valid?
-        @clip.save
-        redirect_to @clip
-        return #early return so we don't have else statement
+      @clip = Clip.new
+      
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @clip }
+        format.xml { render xml: @clip }
       end
-
-      render :new # didn't pass validation
     end
 
+    # POST /create
+    # POST /create.json
+    # POST /create.xml
+    def create
+      @clip = Clip.new
+      begin
+        @clip = Clip.new(params[:clip])
+      rescue ActiveModel::MassAssignmentSecurity::Error => error
+        @clip.errors.add("Security -",error.message)
+      end
+      
+      respond_to do |format|
+        if @clip.errors.empty? && @clip.valid? && @clip.save
+          format.html { redirect_to @clip }
+          format.json { render json: @clip, status: :created, location: @post }
+          format.xml { render xml: @clip, status: :created, location: @post }
+        else# didn't pass validation
+          format.html { render :new }
+          format.json { render json: @clip.errors, status: :unprocessable_entity }
+          format.xml { render xml: @clip.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    # POST /[id]
+    # POST /[id].json
+    # POST /[id].xml
     def show
       @clip = Clip.where("id = :id and (expires is null OR expires > :now)",{
           :id => params[:id],
@@ -46,19 +74,35 @@ module Clipster
         # Most likely the clip is expired, take advantage of this time to
         # clean up all expired clips, then display error page
         Clip.delete_expired
-        render :expired
+        respond_to do |format|
+          @clip = Clip.new
+          @clip.errors.add("Clip id", "is either invalid or it has expired.")
+          format.html { render :expired, status: :not_found }
+          format.text { render text: @clip.errors, status: :not_found }
+          format.json { render json: @clip.errors, status: :not_found }
+          format.xml { render xml: @clip.errors, status: :not_found }
+        end
         return
       end
 
       respond_to do |format|
         format.html
-        format.text
+        format.text { render text: @clip.clip.html_safe }
+        format.json { render json: @clip }
+        format.xml { render xml: @clip }
       end
     end
 
+    # GET /search?search_term=[term]
+    # GET /search.json?search_term=[term]
+    # GET /search.xml?search_term=[term]
     def search
       @clips = Clip.search(params[:search_term]).page(params[:page])
-      render :clips
+      respond_to do |format|
+        format.html { render :clips }
+        format.json { render json: @clips }
+        format.xml { render xml: @clips }
+      end
     end
 
     def preview
