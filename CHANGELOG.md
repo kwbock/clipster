@@ -1,3 +1,7 @@
+## 2013-01-11 - Release 0.5.3
+* Added modernizr to improve rendering in IE8
+* wrapped legend in fieldset. this is a known workaround to a bug in bootstrap
+
 ## 2012-12-09 - Release 0.5.0
 * Added a 'raw' view for clips - #24.
 * Added a 'copy' button for clips.
