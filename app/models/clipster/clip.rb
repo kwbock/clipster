@@ -1,10 +1,12 @@
 module Clipster
   class Clip < ActiveRecord::Base
     include ActionView::Helpers::DateHelper
+    extend Clipster::ModelUtilities
 
     before_create :default_values
 
     self.primary_key = :id
+    set_primary_key :id if self.use_deprecated_primary_key?
 
     attr_accessible :clip, :language, :title, :private, :expires, :lifespan
     cattr_reader :lifespans
