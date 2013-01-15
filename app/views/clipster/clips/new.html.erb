@@ -14,7 +14,7 @@
 </script>
 <legend>New Clip</legend>
 
-<%= form_for(@clip, :url => { :action => "create" }) do |f| %>
+<%= form_for(@clip, :url => { :action => "create" }, :html => {:id => :new_clip}) do |f| %>
   <%= f.error_messages %>
 
   <!-- 1st Row -->
